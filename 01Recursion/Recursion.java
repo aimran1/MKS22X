@@ -20,33 +20,21 @@ public class Recursion{
       throw new IllegalArgumentException();
     }
 
-    if (n == 0){
-      return 0;
-    }
-
-    if (n == 1){
-      return 1;
-    }
-
-    return helpFib(0,1,1,n);
+    return helpFib(0,1,n);
 
   }
 
-  private static int helpFib(int a, int b, int result, int loc){
+  private static int helpFib(int a, int b, int loc){
 
-    if (a == 0){
+    if (loc == 0){
       return 0;
     }
 
-    if (b == 1){
+    if (loc == 1){
       return 1;
     }
 
-    if (loc == 0){
-      return result;
-    }
-
-    return helpFib(b, result, a + b + result, loc-1);
+    return helpFib(b, a + b, loc-1);
 
   }
 
@@ -59,6 +47,14 @@ public class Recursion{
     // System.out.println(fact(5));
     // System.out.println(fact(6));
     // System.out.println(fact(7));
+    System.out.println(fib(0));
+    System.out.println(fib(1));
+    System.out.println(fib(2));
+    System.out.println(fib(3));
+    System.out.println(fib(4));
+    System.out.println(fib(5));
+    System.out.println(fib(6));
+
   }
 
 }
