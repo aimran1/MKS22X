@@ -55,13 +55,13 @@ public class Recursion{
     // System.out.println(fact(5));
     // System.out.println(fact(6));
     // System.out.println(fact(7));
-    System.out.println(fib(0));
+    /* System.out.println(fib(0));
     System.out.println(fib(1));
     System.out.println(fib(2));
     System.out.println(fib(3));
     System.out.println(fib(4));
-    System.out.println(fib(5));
-    System.out.println(fib(6));
+    System.out.println(fib(5));*/
+    System.out.println(fib(20));
 
   }
 
