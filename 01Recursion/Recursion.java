@@ -52,13 +52,17 @@ public class Recursion{
       throw new IllegalArgumentException();
     }
 
+    if (n == 0){
+      return 0;
+    }
+
     return helpSqrt(n, n/2);
 
   }
 
   private static double helpSqrt(double squared, double guess){
 
-    if ((Math.abs(Math.pow(guess,2) - squared / squared)) <= 0.000001){
+    if ((Math.abs((Math.pow(guess,2) - squared) / squared)) <= 0.000000000000001){
       return guess;
     }
 
@@ -66,7 +70,7 @@ public class Recursion{
 
   }
 
-  public static void main(String[] args){
+    // public static void main(String[] args){
     // System.out.println(fact(15));
     // System.out.println(fact(1));
     // System.out.println(fact(2));
@@ -80,9 +84,10 @@ public class Recursion{
     System.out.println(fib(2));
     System.out.println(fib(3));
     System.out.println(fib(4));
-    System.out.println(fib(5));*/
-    System.out.println(fib(20));
-
-  }
+    System.out.println(fib(5));
+    System.out.println(fib(20));*/
+    // System.out.println(sqrt(-1));
+    // System.out.println(Math.sqrt(0));
+    // }
 
 }
