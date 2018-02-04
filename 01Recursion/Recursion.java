@@ -20,18 +20,26 @@ public class Recursion{
       throw new IllegalArgumentException();
     }
 
-    return helpFib(0,1,n);
+    if (n == 0){
+      return 0;
+    }
+
+    if (n == 1){
+      return 1;
+    }
+
+    return helpFib(1,0,n);
 
   }
 
   private static int helpFib(int a, int b, int loc){
 
     if (loc == 0){
-      return 0;
+      return 1;
     }
 
     if (loc == 1){
-      return 1;
+      return a+b;
     }
 
     return helpFib(b, a + b, loc-1);
