@@ -46,6 +46,26 @@ public class Recursion{
 
   }
 
+  public static double sqrt(double n){
+
+    if (n < 0){
+      throw new IllegalArgumentException();
+    }
+
+    return helpSqrt(n, n/2);
+
+  }
+
+  private static double helpSqrt(double squared, double guess){
+
+    if ((Math.abs(Math.pow(guess,2) - squared / squared)) <= 0.000001){
+      return guess;
+    }
+
+    return helpSqrt(squared, (squared/guess + guess)/2);
+
+  }
+
   public static void main(String[] args){
     // System.out.println(fact(15));
     // System.out.println(fact(1));
