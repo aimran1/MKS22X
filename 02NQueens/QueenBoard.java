@@ -27,7 +27,7 @@ public class QueenBoard{
 	for (int i = 0; i < board.length; i++){
 	    b = b + "\n";
 	    for (int j = 0; j < board[i].length; j++){
-		if (board[i][j] < 0){
+		if (board[j][i] < 0){
 		    b = b + " " + "Q";
 		}else {
 		    b = b + " " + "_";
@@ -39,6 +39,10 @@ public class QueenBoard{
 
     public static void main (String[] args){
 	QueenBoard n = new QueenBoard(5);
+	n.addQueen(1,3);
+	n.addQueen(2,4);
+	n.removeQueen(1,3);
+	n.removeQueen(1,3);
 	System.out.println(n);
     }
 
