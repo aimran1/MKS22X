@@ -22,6 +22,12 @@ public class QueenBoard{
             }
         }
       }
+      for (int i = 1; r + i < board.length || c + i < board.length; i++){
+        board[r+i][c-i]+=1;
+        if(r-i>=0 && c+i <board.length){
+          board[r-i][c+i]+=1;
+        }
+      }
       return true;
     }
     return false;
@@ -52,8 +58,8 @@ public class QueenBoard{
 
     public static void main (String[] args){
       QueenBoard n = new QueenBoard(5);
-      n.addQueen(1,3);
-      // n.addQueen(2,4);
+      // n.addQueen(1,3);
+       n.addQueen(2,4);
       //	n.removeQueen(1,3);
       //	n.removeQueen(1,3);
       System.out.println(n);
