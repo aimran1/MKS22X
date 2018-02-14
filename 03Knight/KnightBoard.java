@@ -43,9 +43,24 @@ public class KnightBoard{
     }
 
     public boolean solveH(int row, int col, int level){
-	
+	for(int i = 0; i < board.length; i++){
+	    for (int j = 0; j < board[i].length; j++){
+		
+	    }
+	}
     }
 
+    public boolean isValid(int row, int col){
+	if (row + 2 <= board[0].length && col + 1 < board.length ||
+	    row + 2 <= board[0].length && col - 2 < board.length ||
+	    row + 1 <= board[0].length && col + 2 < board.length ||
+	    row + 1 <= board[0].length && col - 2 < board.length ||
+	    row - 2 >= 0 && col ){
+	    return true;
+	}
+	
+    }
+    
     public boolean zero(){
 	for (int i = 0; i < board.length; i++){
 	    for (int j = 0; j < board[i].length; j++){
