@@ -18,7 +18,7 @@ public class QueenBoard{
         if (board[j][i] < 0){
           b = b + " " + "Q";
         }else {
-          b = b + " " + board[j][i];
+          b = b + " " + "_";
         }
 	    }
     }
