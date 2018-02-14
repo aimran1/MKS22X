@@ -11,7 +11,7 @@ public class QueenBoard{
   private boolean addQueen(int r, int c){
     if (board[r][c] == 0){
 	    board[r][c] = -1;
-	    for (int row = 0; row < board.length; row++){
+      for (int row = 0; row < board.length; row++){
         for (int col = 0; col < board[row].length; col++){
           if (row == r && col != c){
             board[row][col] += 1; 
@@ -31,16 +31,18 @@ public class QueenBoard{
         if(r-i>=0 && c+i <board.length){
           board[r-i][c+i]+=1;
         }
-	    }
+}
 	    return true;
     }
     return false;
   }
-    
+
+  
+  
   private boolean removeQueen(int r, int c){
     if (board[r][c] < 0){
 	    board[r][c] = 0;
-	    for (int row = 0; row < board.length; row++){
+ for (int row = 0; row < board.length; row++){
         for (int col = 0; col < board[row].length; col++){
           if (row == r && col != c){
             board[row][col] -= 1; 
@@ -60,7 +62,7 @@ public class QueenBoard{
         if(r-i>=0 && c+i <board.length){
           board[r-i][c+i]-=1;
         }
-	    }
+}
 	    return true;
     }
     return false;
@@ -94,7 +96,7 @@ public class QueenBoard{
         if (board[j][i] < 0){
           b = b + " " + "Q";
         }else {
-          b = b + " " + "_";
+          b = b + " " + board[j][i];
         }
 	    }
     }
@@ -130,14 +132,14 @@ public class QueenBoard{
     return helpCount(0);
   }
 
-  private int helpCount(int col){
-    if (col == board.length){
-      return 1;
+  private int helpCount(int row){
+    if (row >= board.length){
+      return count+=1;
     }
-    for (int i = 0; i < board.length-1; i++){
-      if (addQueen(i,col)){
-        count += helpCount(col+1);
-        removeQueen(i,col);
+    for (int i = 0; i < board.length; i++){
+      if (addQueen(row,i)){
+        helpCount(row+1);
+        removeQueen(row,i);
       }
     }
     return count;
@@ -148,7 +150,7 @@ public static void main(String[] args){
     System.out.println(b.solve()); //prints true
     System.out.println(b); //prints a valid solution
 
-    try{
+   try{
       b.solve();
     }catch(IllegalStateException e){
       System.out.println("Error: The board contains non-zero values");
