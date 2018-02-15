@@ -43,24 +43,90 @@ public class KnightBoard{
     }
 
     public boolean solveH(int row, int col, int level){
+	if (countValid(row,col) == 0){
+	    return anyValid(row,col);
+	}
 	for(int i = 0; i < board.length; i++){
 	    for (int j = 0; j < board[i].length; j++){
-		
+		solveH(board[]
 	    }
 	}
     }
 
-    public boolean isValid(int row, int col){
-	if (row + 2 <= board[0].length && col + 1 < board.length ||
-	    row + 2 <= board[0].length && col - 2 < board.length ||
-	    row + 1 <= board[0].length && col + 2 < board.length ||
-	    row + 1 <= board[0].length && col - 2 < board.length ||
-	    row - 2 >= 0 && col ){
+    public boolean isValid(int row, int col, int newR, int newC){
+	if (board[newR][newC] > 0){
+	    return false;
+	}
+	if (newR >= board.size || newR < 0 ||
+	    newC >= board[0].size || newC < 0 ||
+	    row >= board.size || row < 0 ||
+	    col >= board.size || col < 0){
+	    return false;
+	}
+	if ((Math.abs(newR - row == 2 && Math.abs(newC - col == 1))) ||
+	    (Math.abs(newC - col == 2 && Math.abs(newR - row == 1)))){
 	    return true;
 	}
-	
+	return false; 
     }
-    
+
+    public int countValid(int row, int col){
+	int count = 0;
+	if (isValid(row, col, row + 2, col + 1)){
+	    count++;
+	}
+	if (isValid(row, col, row + 1, col + 2)){
+	    count++;
+	}
+	if (isValid(row, col, row - 2, col + 1)){
+	    count++;
+	}
+	if (isValid(row, col, row - 1, col + 2)){
+	    count++;
+	}
+	if (isValid(row, col, row + 2, col - 1)){
+	    count++;
+	}
+	if (isValid(row, col, row + 1, col - 2)){
+	    count++;
+	}
+	if (isValid(row, col, row - 2, col - 1)){
+	    count++;
+	}
+	if (isValid(row, col, row - 1, col - 2)){
+	    count++;
+	}
+	return count;
+    }
+
+public boolean anyValid(int row, int col){
+    if (isValid(row, col, row + 2, col + 1)){
+	return true;
+    }
+    if (isValid(row, col, row + 1, col + 2)){
+	return true;
+    }
+    if (isValid(row, col, row - 2, col + 1)){
+	return true;
+    }
+    if (isValid(row, col, row - 1, col + 2)){
+	return true;
+    }
+    if (isValid(row, col, row + 2, col - 1)){
+	return true;
+    }
+    if (isValid(row, col, row + 1, col - 2)){
+	return true;
+    }
+    if (isValid(row, col, row - 2, col - 1)){
+	return true;
+    }
+    if (isValid(row, col, row - 1, col - 2)){
+	return true;
+    }
+    return false;
+}
+
     public boolean zero(){
 	for (int i = 0; i < board.length; i++){
 	    for (int j = 0; j < board[i].length; j++){
