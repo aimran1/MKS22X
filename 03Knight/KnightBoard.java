@@ -1,6 +1,7 @@
 public class KnightBoard{
   
   private int[][] board;
+  private int[][] cboard;
   
   public KnightBoard(int startingRows, int startingCols){
     if (startingRows < 0 || startingCols < 0){
@@ -12,6 +13,7 @@ public class KnightBoard{
         board[i][j] = 0; 
 	    }
     }
+    cboard = board;
   }
 
   public String toString(){
@@ -19,7 +21,7 @@ public class KnightBoard{
     for (int i = 0; i < board.length; i++){
 	    b += "\n";
 	    for (int j = 0; j < board[i].length; j++){
-        if (board[j][i] <10){
+        if (board[j][i] < 10){
           b += "  " + board[j][i];
         }
         else{
@@ -55,6 +57,7 @@ public class KnightBoard{
         }
       }
     }
+    board = cboard;
     return false;
   }
 
@@ -84,6 +87,13 @@ public class KnightBoard{
 	    }
     }
     return true;
+  }
+
+  public static void main(String[] args){
+    KnightBoard b = new KnightBoard(5,5);
+    System.out.println(b);
+    b.solve(0,0);
+    System.out.println(b);
   }
     
 }
