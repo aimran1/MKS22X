@@ -64,7 +64,7 @@ public class KnightBoard{
     return false;
   }
 
-   public int countSolutions(int startingRow, int startingCol){
+  public int countSolutions(int startingRow, int startingCol){
     if (!zero()){
 	    throw new IllegalStateException();
     }
@@ -76,17 +76,18 @@ public class KnightBoard{
 
   private int countH(int row, int col, int level){
     int sol = 0;
-    if (level == row*col){
-      return 1;
-    }
     if(!isValid(row,col)){
       return 0;
     }
-    for (int i = 0; i < 8; i++){
-      board[row][col] = level;
-      sol += countH(row+x[i],col+y[i],level+1);
+    if (level == board.length*board[0].length){
       board[row][col] = 0;
+      return 1;
     }
+    board[row][col] = level;
+    for (int i = 0; i < 8; i++){
+      sol += countH(row+x[i],col+y[i],level+1);
+    }
+    board[row][col] = 0;
     return sol;
   }
   
@@ -109,22 +110,5 @@ public class KnightBoard{
     }
     return true;
   }
-  
-  public static void main(String[] args){
- 
-    KnightBoard c = new KnightBoard(5,5);
 
-    int totalSol = 0;
-     for (int i = 0; i < 5; i++){
-      for (int j = 0; j < 5; j++){
-        totalSol += c.countSolutions(i,j);
-      }
-     }
-
-     System.out.println(totalSol); //prints 1728
-
-    /* KnightBoard d = new KnightBoard(5,5);
-   System.out.println(d.countSolutions(0,0)); //prints 304*/
-
-  }
-  }
+}
