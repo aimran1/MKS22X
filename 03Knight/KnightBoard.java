@@ -133,7 +133,7 @@ public class KnightBoard{
         if (board[i][j] != 0){
           return false;
         }
-	    }
+      }	
     }
     return true;
   }
