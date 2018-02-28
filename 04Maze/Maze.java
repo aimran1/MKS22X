@@ -4,29 +4,37 @@ import java.io.*;
 public class Maze{
     private char[][]maze;
     private boolean animate;
-
-    public Maze(String filename){
-	try{
-	Scan(filename);
-	}catch(FileNotFoundException e){
-	    System.out.println("Invalid");
-	}
-    }
-
-    public void Scan(String filename) throws FileNotFoundException{
-	File text = new File(filename + ".dat");
+    private int rows = 0;
+    private int cols = 0;
+    
+    public Maze(String filename) throws FileNotFoundException{
+    	File text = new File(filename + ".dat");
 	Scanner in = new Scanner(text);
-	char line;
+	String line = "";
 	int row = 0;
 	while (in.hasNextLine()){
-	    line = in.nextLine();
-	    for (int i = 0; i < line.length; i++){
-		maze[row][i] = ;
-	    }
+	    line += in.nextLine();
+	    rows++;
+	    cols = line.length();
 	}
+	maze = new char[rows][cols];
+	maker(line);
     }
 
+    /*  private void maker(String s){
+	for (int i = 0; i < s.length();i++,cols++){
+	    if (s.charAt(i) == '\n'){
+		rows++;
+		cols = 0;
+	    }else{
+		maze[rows][cols] = s.charAt(i);
+	    }
+	}
+	}*/   
+
     public static void main(String[] args) {
-	Maze m = new Maze("d1");
+	try{
+	    Maze m = new Maze("d1");    
+	}catch(FileNotFoundException e){}
     }
 }
