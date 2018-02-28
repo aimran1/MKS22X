@@ -26,28 +26,22 @@ public class KnightBoard{
 
   }
 
-  public String toString(){
-    String b = "";
-
+  //------------------------Fast Helper----------------------
+  private void makeFast(){
+    int count = 0;
     for (int i = 0; i < board.length; i++){
-      b += "\n";
-      for (int j = 0; j < board[i].length; j++){
-        if(board[i][j] == 0){
-          b += " _";
+      for (int j = 0; j < board[0].length; j++){
+        count = 0;
+        for (int k = 0; k < 8; k++){
+          if(isValid(i+x[k],j+y[k])){
+            count += 1;
+          }
         }
-
-        else if (board[i][j] < 10){
-          b += "  " + board[i][j];
-        }
-
-        else{
-          b += " " + board[i][j];
-        }
+        fast[i][j] = count;
       }
     }
-
-    return b;
   }
+
 
   //-------------------Solve and SolveHelper----------------------
   public boolean solve(int startingRows, int startingCol){
@@ -87,11 +81,9 @@ public class KnightBoard{
     if (!zero()){
       throw new IllegalStateException();
     }
-
     if(!isValid(startingRow,startingCol)){
       throw new IllegalArgumentException();
     }
-
     return solveFH(startingRow,startingCol,1);
   }
 
@@ -103,6 +95,7 @@ public class KnightBoard{
 
     int s = 9;//Largest amount of possibilities = 8;
 
+    //--------Find Small Branches--------
     for (int i = 0; i < 8; i++){
       if(isValid(row+x[i],col+y[i])){
         if(fast[row+x[i]][col+y[i]] < s){
@@ -111,6 +104,7 @@ public class KnightBoard{
       }
     }
 
+    //------Solve-------
     for (int i = 0; i < 8; i++){
       if(isValid(row+x[i],col+y[i])){
         if(fast[row+x[i]][col+y[i]] == s){
@@ -184,49 +178,27 @@ public class KnightBoard{
     return true;
   }
 
-  //------------------------Fast Helpers----------------------
-  private void makeFast(){
-    int count = 0;
-    for (int i = 0; i < board.length; i++){
-      for (int j = 0; j < board[0].length; j++){
-        count = 0;
-        for (int k = 0; k < 8; k++){
-          if(isValid(i+x[k],j+y[k])){
-            count += 1;
-          }
-        }
-        fast[i][j] = count;
-      }
-    }
-  }
-
-  public static void print(){
+  public String toString(){
     String b = "";
 
-    for (int i = 0; i < fast.length; i++){
+    for (int i = 0; i < board.length; i++){
       b += "\n";
-      for (int j = 0; j < fast[i].length; j++){
-        if(fast[i][j] == 0){
+      for (int j = 0; j < board[i].length; j++){
+        if(board[i][j] == 0){
           b += " _";
         }
 
-        else if (fast[i][j] < 10){
-          b += "  " + fast[i][j];
+        else if (board[i][j] < 10){
+          b += "  " + board[i][j];
         }
 
         else{
-          b += " " + fast[i][j];
+          b += " " + board[i][j];
         }
       }
     }
 
-    System.out.println( b );
-  }
-
-  public static void main(String[] args){
-    KnightBoard n = new KnightBoard(5,5);
-    n.solveFast(0,0);
-    System.out.println(n);
+    return b;
   }
 
 }
