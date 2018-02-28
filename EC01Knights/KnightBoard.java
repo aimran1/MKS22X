@@ -112,12 +112,14 @@ public class KnightBoard{
     }
 
     for (int i = 0; i < 8; i++){
-      if(fast[row+x[i]][col+y[i]] == s){
-        board[row][col] = level;
-        if(solveFH(row+x[i],col+y[i],level+1)){
-          return true;
+      if(isValid(row+x[i],col+y[i])){
+        if(fast[row+x[i]][col+y[i]] == s){
+          board[row][col] = level;
+          if(solveFH(row+x[i],col+y[i],level+1)){
+            return true;
+          }
+          board[row][col] = 0;
         }
-        board[row][col] = 0;
       }
     }
 
