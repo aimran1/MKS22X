@@ -83,7 +83,46 @@ public class KnightBoard{
     return false;
   }
 
+  public boolean solveFast(int startingRow, int startingCol){
+    if (!zero()){
+      throw new IllegalStateException();
+    }
 
+    if(!isValid(startingRow,startingCol)){
+      throw new IllegalArgumentException();
+    }
+
+    return solveFH(startingRow,startingCol,1);
+  }
+
+  private boolean solveFH(int row, int col, int level){
+    if (level == board.length * board[0].length){
+      board[row][col] = level;
+      return true;
+    }
+
+    int s = 9;//Largest amount of possibilities = 8;
+
+    for (int i = 0; i < 8; i++){
+      if(isValid(row+x[i],col+y[i])){
+        if(fast[row+x[i]][col+y[i]] < s){
+          s = fast[row+x[i]][col+y[i]];
+        }
+      }
+    }
+
+    for (int i = 0; i < 8; i++){
+      if(fast[row+x[i]][col+y[i]] == s){
+        board[row][col] = level;
+        if(solveFH(row+x[i],col+y[i],level+1)){
+          return true;
+        }
+        board[row][col] = 0;
+      }
+    }
+
+    return false;
+  }
 
   //--------------------Count and CountHelper---------------------
   public int countSolutions(int startingRow, int startingCol){
@@ -184,7 +223,8 @@ public class KnightBoard{
 
   public static void main(String[] args){
     KnightBoard n = new KnightBoard(5,5);
-    print();
+    n.solveFast(0,0);
+    System.out.println(n);
   }
 
 }
