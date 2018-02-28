@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class KnightBoard{
 
   private int[][] board;
@@ -98,7 +100,7 @@ public class KnightBoard{
     //--------Find Small Branches--------
     for (int i = 0; i < 8; i++){
       if(isValid(row+x[i],col+y[i])){
-        if(fast[row+x[i]][col+y[i]] < s){
+        if(fast[row+x[i]][col+y[i]] <= s){
           s = fast[row+x[i]][col+y[i]];
         }
       }
