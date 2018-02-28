@@ -1,7 +1,7 @@
 public class KnightBoard{
 
   private int[][] board;
-  private int[][] fast;
+  private static int[][] fast;
 
   //----------------All possible Knight moves---------------------
   private int[] x ={1,1,2,2,-1,-1,-2,-2};
@@ -15,6 +15,8 @@ public class KnightBoard{
     }
 
     board = new int[startingRows][startingCols];
+    fast = new int[startingRows][startingCols];
+    makeFast();
 
     for (int i = 0; i < board.length; i++){
       for (int j = 0; j < board[i].length; j++){
@@ -155,6 +157,34 @@ public class KnightBoard{
         fast[i][j] = count;
       }
     }
+  }
+
+  public static void print(){
+    String b = "";
+
+    for (int i = 0; i < fast.length; i++){
+      b += "\n";
+      for (int j = 0; j < fast[i].length; j++){
+        if(fast[i][j] == 0){
+          b += " _";
+        }
+
+        else if (fast[i][j] < 10){
+          b += "  " + fast[i][j];
+        }
+
+        else{
+          b += " " + fast[i][j];
+        }
+      }
+    }
+
+    System.out.println( b );
+  }
+
+  public static void main(String[] args){
+    KnightBoard n = new KnightBoard(5,5);
+    print();
   }
 
 }
