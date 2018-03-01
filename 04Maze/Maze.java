@@ -11,18 +11,42 @@ public class Maze{
     	File text = new File(filename + ".dat");
 	Scanner in = new Scanner(text);
 	String line = "";
-	int row = 0;
 	while (in.hasNextLine()){
 	    line += in.nextLine();
-	    rows++;
 	    cols = line.length();
+	    rows++;
 	}
 	maze = new char[rows][cols];
-	maker(line);
+	
+	System.out.println(toString());
     }
 
-    /*  private void maker(String s){
-	for (int i = 0; i < s.length();i++,cols++){
+    private void wait(int millis){
+         try {
+             Thread.sleep(millis);
+         }
+         catch (InterruptedException e) {
+         }
+     }
+
+
+    public void setAnimate(boolean b){
+
+        animate = b;
+
+    }
+
+
+    public void clearTerminal(){
+
+        //erase terminal, go to top left of screen.
+
+        System.out.println("\033[2J\033[1;1H");
+
+    }
+
+    private void maker(String s){
+	for (int i = 0; i < s.length()-1;i++,cols++){
 	    if (s.charAt(i) == '\n'){
 		rows++;
 		cols = 0;
@@ -30,11 +54,24 @@ public class Maze{
 		maze[rows][cols] = s.charAt(i);
 	    }
 	}
-	}*/   
+    }
+
+    public String toString(){
+	String ans = "";
+	for (int i = 0; i < rows-1;i++){
+	    for (int j = 0; j < cols-1; j++){
+		ans += maze[i][j];
+	    }
+	    ans += '\n'; 
+	}
+	return ans;
+      }
 
     public static void main(String[] args) {
 	try{
 	    Maze m = new Maze("d1");    
-	}catch(FileNotFoundException e){}
+	}catch(FileNotFoundException e){
+	    System.out.println("Are u sure the file's here");
+	}
     }
 }
