@@ -57,8 +57,9 @@ public class Maze{
     }
 
     for (int i = 0; i < 4; i++){
-      if ((solve(row+x[i], col+y[i],moves++)) != -1){
-        return solve(row+x[i], col+y[i],moves++);
+      int sol = solve(row+x[i], col+y[i],moves++);
+      if (sol != -1){
+        return sol;
       }
     }
     
