@@ -52,7 +52,7 @@ public class Maze{
       maze[row][col] = '@';
     }
 
-    if (maze[row][col] == '#' || maze[row][col] == '@'){
+    else{
       return -1;
     }
 
@@ -135,7 +135,7 @@ public class Maze{
   public static void main(String[] args) {
     try{
 	    Maze m = new Maze("d1.dat");
-          System.out.println(m.solve());
+      System.out.println(m.solve());
 
     }catch(FileNotFoundException e){
 	    System.out.println("Are u sure the file's here");
