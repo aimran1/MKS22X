@@ -37,7 +37,6 @@ public class Maze{
   }
 
   private int solve(int row, int col, int moves){
-    animate = true; //REMOVE THIS LATER
     if (animate){
       clearTerminal();
       System.out.println(this);
@@ -58,11 +57,11 @@ public class Maze{
 
     for (int i = 0; i < 4; i++){
       int sol = solve(row+x[i], col+y[i],moves++);
-      if (sol != -1){
+      if (sol > 0){
         return sol;
       }
     }
-    
+    maze[row][col] = '.';
     return -1;
   }
 
@@ -135,12 +134,12 @@ public class Maze{
   
   public static void main(String[] args) {
     try{
-	    Maze m = new Maze("d1.dat");
-      System.out.println(m.solve());
-
+	    Maze m = new Maze("d3.dat");
+      m.solve();
+      System.out.println("Final State:");
+      System.out.println(m);
     }catch(FileNotFoundException e){
 	    System.out.println("Are u sure the file's here");
     }
-    // setAnimate(true);
   }
 }
