@@ -5,6 +5,8 @@ public class Maze{
   private char[][]maze;
   private boolean animate;
   private int[] sLoc = new int[2];
+  private int[] x = {0,0,1,-1};
+  private int[] y = {1,-1,0,0};
   private int rows = 0;
   private int cols = 0;
     
@@ -30,7 +32,16 @@ public class Maze{
   }
 
   public int solve(){
-    return 1;
+    maze[sLoc[0]][sLoc[1]] = ' ';
+    return solve(sLoc[0],sLoc[1],0);
+  }
+
+  private int solve(int row, int col, int moves){
+    if (maze[row][col] == 'E'){
+      return moves;
+    }
+    
+    return -1;
   }
 
   public boolean isValid(){
@@ -49,7 +60,7 @@ public class Maze{
       }
     }
     if (s != 1 && e != 1){
-      throw New IllegalStateException();
+      throw new IllegalStateException();
     }
     return true;
   }
