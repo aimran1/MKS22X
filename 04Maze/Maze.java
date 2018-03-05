@@ -28,7 +28,6 @@ public class Maze{
       }
     }
     isValid();
-    System.out.println(toString());
   }
 
   public int solve(){
@@ -135,6 +134,8 @@ public class Maze{
   public static void main(String[] args) {
     try{
 	    Maze m = new Maze("d3.dat");
+      // System.out.println(m.solve());
+      m.setAnimate(true);
       m.solve();
       System.out.println("Final State:");
       System.out.println(m);
