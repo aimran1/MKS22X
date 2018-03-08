@@ -107,13 +107,4 @@ public class Maze{
     System.out.println("\033[2J\033[1;1H");
   }
 
-  public static void main (String[] args){
-    try{
-    Maze l = new Maze("d3.dat");
-    System.out.println(l.solve());
-    }catch(FileNotFoundException e){
-      
-    }
-  }
-
 }
