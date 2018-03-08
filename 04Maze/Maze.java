@@ -112,7 +112,7 @@ public class Maze{
 	String sol = "";
 	for (int i = 0; i < maze.length; i++){
 	    sol += "\n";
-	    for (int j = 0; j < maze.length; j++){
+	    for (int j = 0; j < maze[i].length; j++){
 		sol += maze[i][j];
 	    }
 	}
