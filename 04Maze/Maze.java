@@ -33,38 +33,39 @@ public class Maze{
   }
 
   //-----------------------------Solve Methods-------------------------
-  public int solve(){
-    maze[sLoc[0]][sLoc[1]] = ' ';
-    return solve(sLoc[0],sLoc[1],0);
-  }
-
-  private int solve(int row, int col, int moves){
+    public int solve(){
+	maze[sLoc[0]][sLoc[1]] = ' ';
+	return solve(sLoc[0],sLoc[1],0);
+    }
+    
+    private int solve(int row, int col, int moves){
       if (animate){
 	  clearTerminal();
 	  System.out.println(this);
 	  wait(20);
       }
-    
-    if (maze[row][col] == 'E'){
-      return moves;
-    }
-
-    if (maze[row][col] == ' '){
-      maze[row][col] = '@';
-    }
-
-    else{
-      return -1;
-    }
-
-    for (int i = 0; i < 4; i++){
-      int sol = solve(row+x[i], col+y[i],moves++);
-      if (sol > 0){
-        return sol;
+      
+      if (maze[row][col] == 'E'){
+	  return moves;
       }
-    }
-    maze[row][col] = '.';
-    return -1;
+      
+      if (maze[row][col] == ' '){
+	  maze[row][col] = '@';
+      }
+      
+      else{
+	  return -1;
+      }
+      
+      for (int i = 0; i < 4; i++){
+	  int sol = solve(row+x[i], col+y[i],moves++);
+	  if (sol > 0){
+	      return sol;
+	  }
+      }
+
+      maze[row][col] = '.';
+      return -1;
   }
 
   //----------------Helper to Check Board State-------------------
@@ -107,4 +108,14 @@ public class Maze{
     System.out.println("\033[2J\033[1;1H");
   }
 
+    public String toString(){
+	String sol = "";
+	for (int i = 0; i < maze.length; i++){
+	    sol += "\n";
+	    for (int j = 0; j < maze.length; j++){
+		sol += maze[i][j];
+	    }
+	}
+	return sol;
+    }
 }
