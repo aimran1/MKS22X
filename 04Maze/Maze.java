@@ -39,11 +39,11 @@ public class Maze{
   }
 
   private int solve(int row, int col, int moves){
-    /* if (animate){
-      clearTerminal();
-      System.out.println(this);
-      wait(20);
-      }*/
+      if (animate){
+	  clearTerminal();
+	  System.out.println(this);
+	  wait(20);
+      }
     
     if (maze[row][col] == 'E'){
       return moves;
