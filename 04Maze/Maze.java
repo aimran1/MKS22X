@@ -78,7 +78,7 @@ public class Maze{
           sLoc[0] = i;
           sLoc[1] = j;
         }
-        if(maze[i][j] == 'S'){
+        if(maze[i][j] == 'E'){
           e++;
         }
       }
