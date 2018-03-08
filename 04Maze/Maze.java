@@ -4,7 +4,7 @@ import java.io.*;
 public class Maze{
 
   private char[][]maze;
-  private boolean animate;
+  private boolean animate = false;
   private int[] sLoc = new int[2];
   private int[] x = {0,0,1,-1};
   private int[] y = {1,-1,0,0};
@@ -39,11 +39,11 @@ public class Maze{
   }
 
   private int solve(int row, int col, int moves){
-    if (animate){
+    /* if (animate){
       clearTerminal();
       System.out.println(this);
       wait(20);
-    }
+      }*/
     
     if (maze[row][col] == 'E'){
       return moves;
@@ -105,6 +105,15 @@ public class Maze{
   public void clearTerminal(){
     //erase terminal, go to top left of screen.
     System.out.println("\033[2J\033[1;1H");
+  }
+
+  public static void main (String[] args){
+    try{
+    Maze l = new Maze("d3.dat");
+    System.out.println(l.solve());
+    }catch(FileNotFoundException e){
+      
+    }
   }
 
 }
