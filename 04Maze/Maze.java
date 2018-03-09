@@ -10,7 +10,7 @@ public class Maze{
   private int[] y = {1,-1,0,0};
   private int rows = 0;
   private int cols = 0;
-
+  
   //---------------------------Constructor-----------------------------
   public Maze(String filename) throws FileNotFoundException{
     File text = new File(filename);
@@ -33,39 +33,41 @@ public class Maze{
   }
 
   //-----------------------------Solve Methods-------------------------
-    public int solve(){
-	maze[sLoc[0]][sLoc[1]] = ' ';
-	return solve(sLoc[0],sLoc[1],0);
+  public int solve(){
+    maze[sLoc[0]][sLoc[1]] = ' ';
+    return solve(sLoc[0],sLoc[1],0);
+  }
+    
+  private int solve(int row, int col, int moves){
+    if (animate){
+      clearTerminal();
+      System.out.println(this);
+      System.out.println(moves);
+      wait(20);
+    }
+      
+    if (maze[row][col] == 'E'){
+      return moves;
     }
     
-    private int solve(int row, int col, int moves){
-      if (animate){
-	  clearTerminal();
-	  System.out.println(this);
-	  wait(20);
-      }
-      
-      if (maze[row][col] == 'E'){
-	  return moves;
-      }
-      
-      if (maze[row][col] == ' '){
-	  maze[row][col] = '@';
-      }
-      
-      else{
-	  return -1;
-      }
-      
-      for (int i = 0; i < 4; i++){
-	  int sol = solve(row+x[i], col+y[i],moves++);
-	  if (sol > 0){
-	      return sol;
-	  }
-      }
-
-      maze[row][col] = '.';
+    if (maze[row][col] == ' '){
+      moves++;
+      maze[row][col] = '@';
+    }
+    
+    else{
       return -1;
+    }
+    
+    for (int i = 0; i < 4; i++){
+      int sol = solve(row+x[i], col+y[i],moves);
+      if (sol > 0){
+	      return sol;
+      }
+    }
+    moves--;
+    maze[row][col] = '.';
+    return -1;
   }
 
   //----------------Helper to Check Board State-------------------
@@ -84,7 +86,7 @@ public class Maze{
         }
       }
     }
-    if (s != 1 && e != 1){
+    if (s != 1 || e != 1){
       throw new IllegalStateException();
     }
     return true;
@@ -108,14 +110,15 @@ public class Maze{
     System.out.println("\033[2J\033[1;1H");
   }
 
-    public String toString(){
-	String sol = "";
-	for (int i = 0; i < maze.length; i++){
+  public String toString(){
+    String sol = "";
+    for (int i = 0; i < maze.length; i++){
 	    sol += "\n";
 	    for (int j = 0; j < maze[i].length; j++){
-		sol += maze[i][j];
+        sol += maze[i][j];
 	    }
-	}
-	return sol;
     }
+    return sol;
+  }
+
 }
