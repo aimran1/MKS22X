@@ -97,22 +97,11 @@ public class USACO{
     System.out.println(R1 + " " + C1 + " " + R2 + " " + C2);
     if (T % 2 == 0){
 	cur[R1][C1] = 2 * T;
-	if (R1 - T >= 0){
-	    cur[R1 - T][C1] = 1;
-	}
-	if (R1 + T < cur.length){
-	    cur[R1 + T][C1] = 1;
-	}
-	if (C1+T < cur[0].length){
-	    cur[R1][C1+T] = 1;
-	}
-	if (C1 - T >= 0){
-	    cur[R1][C1-T] = 1;
-	}
+        
     }
     else {
 	cur[R1][C1] = 0;
-    }
+	}
     System.out.println(toString(cur));
     return 1;
   }
@@ -128,21 +117,21 @@ public class USACO{
     return sol;
   }
 
-      public static  String toString(int[][] arr){
-    String sol = "";
-    for (int i = 0; i < arr.length; i ++){
-      sol+= "\n";
-      for (int j = 0; j <arr[0].length; j++){
-        sol+= arr[i][j] + " ";
-      }
+    public static  String toString(int[][] arr){
+	String sol = "";
+	for (int i = 0; i < arr.length; i ++){
+	    sol+= "\n";
+	    for (int j = 0; j <arr[0].length; j++){
+		sol+= arr[i][j] + " ";
+	    }
+	}
+	return sol;
     }
-    return sol;
-  }
-  
-  public static void main (String[] args){
-   try{
-     System.out.println(silver("d2.txt"));
-   }catch(FileNotFoundException e){}
-  }
-
+    
+    public static void main (String[] args){
+	try{
+	    System.out.println(silver("d2.txt"));
+	}catch(FileNotFoundException e){}
+    }
+    
 }
