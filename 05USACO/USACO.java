@@ -43,20 +43,20 @@ public class USACO{
           }
         }
 
+                      System.out.println(toString(cows));
+
+        
         for (int i = 0; i < 3; i++){
-            for (int j = 0; j < 3; j++){
-              if (cows[i][j] == max){
-                lake[rs+i][cs+j] -= ds;
-                cows[i][j] = lake[rs+i][cs+j];
-                max = lake[rs+i][cs+j];
-              }
-              else if(Math.abs(cows[i][j] - max) <= ds){
-                lake[rs+i][cs+j] = max;
-                cows[i][j] = max;
-              }
-              System.out.println(toString(cows));
+          for (int j = 0; j < 3; j++){
+            if (max - cows[i][j] < ds){
+              lake[rs+i][cs+j] = max - ds;
+              cows[i][j] = lake[rs+i][cs+j];
+            }
           }
         }
+
+        System.out.println(toString(cows));
+
 
 
       }
