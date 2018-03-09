@@ -21,17 +21,17 @@ public class USACO{
           lake[i][j] = in.nextInt();
         }
       }
+      System.out.println(toString(lake));
 
+      
       while (in.hasNext()){
-        int rs = in.nextInt();
-        int cs = in.nextInt();
+        int rs = in.nextInt()-1;
+        int cs = in.nextInt()-1;
         int ds = in.nextInt();
-        int max = lake[rs][cs];
+        int max = 0;
         for (int i = 0; i < 3; i++){
           for (int j = 0; j < 3; j++){
-            try{
               cows[i][j] = lake[rs+i][cs+j];
-            }catch(ArrayIndexOutOfBoundsException e){System.out.println((rs + i) + " " +cs + j);}
           }
         }
 
@@ -43,18 +43,27 @@ public class USACO{
           }
         }
 
-        while(ds > 0){
-          for (int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
               if (cows[i][j] == max){
-                cows[i][j] = max - 1;
-                lake[rs+i][cs+j] = cows[i][j];
+                lake[rs+i][cs+j] -= ds;
+                cows[i][j] = lake[rs+i][cs+j];
+                max = lake[rs+i][cs+j];
               }
-            }
+              else if(Math.abs(cows[i][j] - max) <= ds){
+                lake[rs+i][cs+j] = max;
+                cows[i][j] = max;
+              }
+              System.out.println(toString(cows));
           }
-          ds--;
         }
+
+
       }
+
+
+      
+      System.out.println(toString(lake));
 
       int depth = 0;
       for (int i = 0; i < lake.length; i++){
@@ -65,10 +74,21 @@ public class USACO{
 
       return 72*72*depth;
     }
-    
+
+  public static  String toString(int[][] arr){
+    String sol = "";
+    for (int i = 0; i < arr.length; i ++){
+      sol+= "\n";
+      for (int j = 0; j <arr[0].length; j++){
+        sol+= arr[i][j] + " ";
+      }
+    }
+    return sol;
+  }
+  
   public static void main (String[] args){
    try{
-     bronze("d1.txt");
+     System.out.println(bronze("d1.txt"));
    }catch(FileNotFoundException e){}
   }
 
