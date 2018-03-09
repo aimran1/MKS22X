@@ -68,7 +68,10 @@ public class USACO{
       int depth = 0;
       for (int i = 0; i < lake.length; i++){
         for (int j = 0; j < lake[0].length; j++){
-          depth += lake[i][j];
+          if (E - lake[i][j] > 0){
+            depth += E - lake[i][j];
+            
+          }
         }
       }
 
