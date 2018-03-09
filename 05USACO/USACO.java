@@ -8,7 +8,6 @@ public class USACO{
       //------------Setup-------------
       File l = new File(filename);
       Scanner in = new Scanner(l);
-      // String line = in.nextLine();
       int R, C, E, N;
       R = in.nextInt();
       C = in.nextInt();
@@ -21,20 +20,22 @@ public class USACO{
           lake[i][j] = in.nextInt();
         }
       }
-      System.out.println(toString(lake));
 
-      
-      while (in.hasNext()){
+      //--------------Reads Through All Instructions----------------
+      for (int n = 0; n < N; n++){
         int rs = in.nextInt()-1;
         int cs = in.nextInt()-1;
         int ds = in.nextInt();
         int max = 0;
+
+        //--------------Smaller View// Will Remove Later----------
         for (int i = 0; i < 3; i++){
           for (int j = 0; j < 3; j++){
               cows[i][j] = lake[rs+i][cs+j];
           }
         }
 
+        //-------------Find Max-------------
         for (int i = 0; i < 3; i++){
           for (int j = 0; j < 3; j++){
              if (cows[i][j] > max){
@@ -43,9 +44,7 @@ public class USACO{
           }
         }
 
-                      System.out.println(toString(cows));
-
-        
+        //-----------Set elevations----------
         for (int i = 0; i < 3; i++){
           for (int j = 0; j < 3; j++){
             if (max - cows[i][j] < ds){
@@ -54,31 +53,45 @@ public class USACO{
             }
           }
         }
-
-        System.out.println(toString(cows));
-
-
-
       }
 
-
-      
-      System.out.println(toString(lake));
-
+      //------------Find Depth---------------
       int depth = 0;
       for (int i = 0; i < lake.length; i++){
         for (int j = 0; j < lake[0].length; j++){
           if (E - lake[i][j] > 0){
             depth += E - lake[i][j];
-            
           }
         }
       }
 
+      //----------------Return Solution-----------
       return 72*72*depth;
     }
 
-  public static  String toString(int[][] arr){
+  public static int silver(String filename) throws FileNotFoundException{
+    
+    //------------Setup-------------
+    File l = new File(filename);
+    Scanner in = new Scanner(l);
+    int N, M, T;
+    N = in.nextInt();
+    M = in.nextInt();
+    T = in.nextInt();
+    char[][] map = new char[N][M];
+    int[][] cur = new int[N][M];
+    int[][] old = new int[N][M];
+    for (int i = 0; i < N; i++){
+      String line = in.next();
+      for (int j = 0; j < M; j++){
+        map[i][j] = line.charAt(j);
+      }
+    }
+    System.out.println(toString(map));
+    return 1;
+  }
+  
+  public static  String toString(char[][] arr){
     String sol = "";
     for (int i = 0; i < arr.length; i ++){
       sol+= "\n";
@@ -91,7 +104,7 @@ public class USACO{
   
   public static void main (String[] args){
    try{
-     System.out.println(bronze("d1.txt"));
+     System.out.println(silver("d2.txt"));
    }catch(FileNotFoundException e){}
   }
 
