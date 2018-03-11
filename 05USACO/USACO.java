@@ -3,10 +3,7 @@ import java.io.*;
 
 public class USACO{
 
-  public static int R;
-  public static int C;
-  
-    public static int bronze(String filename) throws FileNotFoundException{
+  public static int bronze(String filename) throws FileNotFoundException{
 
       //------------Setup-------------
       File l = new File(filename);
@@ -81,8 +78,7 @@ public class USACO{
     N = in.nextInt();
     M = in.nextInt();
     T = in.nextInt();
-    R = N;
-    C = M;
+
     char[][] map = new char[N][M];
     int[][] cur = new int[N][M];
     int[][] old = new int[N][M];
@@ -94,6 +90,7 @@ public class USACO{
         map[i][j] = line.charAt(j);
       }
     }
+
     System.out.println(toString(map));
     int R1,C1,R2,C2;
     R1 = in.nextInt()-1;
@@ -103,21 +100,22 @@ public class USACO{
     cur[R1][C1] = 1;
 
     for (int t = 0; t < T; t++){
-
+      old = cur;
+      
       for (int i = 0; i < N; i++){
         for (int j = 0; j < M; j++){
           for (int k = 0; k < 4; k++){
-            if(isValid(i+x[k],j+y[k])){
+            if(i+x[k] >= 0 && i+x[k] < N && j+y[k] >= 0 && j+y[k] < M){
               cur[i][j] += old[i+x[k]][j+y[k]];
             }
           }
         }
-
+        
       }
-      
+          System.out.println(toString(cur));
+          
     }
     
-    System.out.println(toString(cur));
     return 1;
   }
   
@@ -130,13 +128,6 @@ public class USACO{
       }
     }
     return sol;
-  }
-
-  private static boolean isValid(int r, int c){
-    if (r >= 0 && r < R && c >= 0 & c < C){
-      return true;
-    }
-    return false; 
   }
 
       public static  String toString(int[][] arr){
