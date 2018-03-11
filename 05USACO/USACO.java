@@ -3,6 +3,9 @@ import java.io.*;
 
 public class USACO{
 
+  public static int R;
+  public static int C;
+  
     public static int bronze(String filename) throws FileNotFoundException{
 
       //------------Setup-------------
@@ -78,10 +81,13 @@ public class USACO{
     N = in.nextInt();
     M = in.nextInt();
     T = in.nextInt();
-    System.out.println(N + " " + M + " " + T);
+    R = N;
+    C = M;
     char[][] map = new char[N][M];
     int[][] cur = new int[N][M];
     int[][] old = new int[N][M];
+    int[] x = {0,0,1,-1};
+    int[] y = {1,-1,0,0};
     for (int i = 0; i < N; i++){
       String line = in.next();
       for (int j = 0; j < M; j++){
@@ -94,25 +100,23 @@ public class USACO{
     C1 = in.nextInt()-1;
     R2 = in.nextInt()-1;
     C2 = in.nextInt()-1;
-    System.out.println(R1 + " " + C1 + " " + R2 + " " + C2);
-    if (T % 2 == 0){
-	cur[R1][C1] = 2 * T;
-	if (R1 - T >= 0){
-	    cur[R1 - T][C1] = 1;
-	}
-	if (R1 + T < cur.length){
-	    cur[R1 + T][C1] = 1;
-	}
-	if (C1+T < cur[0].length){
-	    cur[R1][C1+T] = 1;
-	}
-	if (C1 - T >= 0){
-	    cur[R1][C1-T] = 1;
-	}
+    cur[R1][C1] = 1;
+
+    for (int t = 0; t < T; t++){
+
+      for (int i = 0; i < N; i++){
+        for (int j = 0; j < M; j++){
+          for (int k = 0; k < 4; k++){
+            if(isValid(i+x[k],j+y[k])){
+              cur[i][j] += old[i+x[i]][j+y[i]];
+            }
+          }
+        }
+
+      }
+      
     }
-    else {
-	cur[R1][C1] = 0;
-    }
+    
     System.out.println(toString(cur));
     return 1;
   }
@@ -126,6 +130,13 @@ public class USACO{
       }
     }
     return sol;
+  }
+
+  private static boolean isValid(int r, int c){
+    if (r >= 0 && r < R && c >= 0 & c < C){
+      return true;
+    }
+    return false; 
   }
 
       public static  String toString(int[][] arr){
