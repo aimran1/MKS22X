@@ -91,28 +91,29 @@ public class USACO{
       }
     }
 
-    System.out.println(toString(map));
     int R1,C1,R2,C2;
     R1 = in.nextInt()-1;
     C1 = in.nextInt()-1;
     R2 = in.nextInt()-1;
     C2 = in.nextInt()-1;
-    cur[R1][C1] = 1;
+    old[R1][C1] = 1;
 
     for (int t = 0; t < T; t++){
-      old = cur;
-      
+      cur = new int[N][M];
       for (int i = 0; i < N; i++){
         for (int j = 0; j < M; j++){
+          cur[i][j] = 0;
           for (int k = 0; k < 4; k++){
             if(i+x[k] >= 0 && i+x[k] < N && j+y[k] >= 0 && j+y[k] < M){
               cur[i][j] += old[i+x[k]][j+y[k]];
+              System.out.println(toString(old));
+
             }
           }
         }
-        
+        old = cur;
+
       }
-          System.out.println(toString(cur));
           
     }
     
