@@ -108,7 +108,7 @@ public class USACO{
         for (int j = 0; j < M; j++){
           for (int k = 0; k < 4; k++){
             if(isValid(i+x[k],j+y[k])){
-              cur[i][j] += old[i+x[i]][j+y[i]];
+              cur[i][j] += old[i+x[k]][j+y[k]];
             }
           }
         }
