@@ -102,7 +102,8 @@ public class USACO{
       cur = new int[N][M];
       for (int i = 0; i < N; i++){
         for (int j = 0; j < M; j++){
-          cur[i][j] = 0;
+          //cur[i][j] = 0;
+          int sol = 0;
           for (int k = 0; k < 4; k++){
             if(i+x[k] >= 0 && i+x[k] < N && j+y[k] >= 0 && j+y[k] < M){
               cur[i][j] += old[i+x[k]][j+y[k]];
@@ -111,10 +112,9 @@ public class USACO{
             }
           }
         }
-        old = cur;
 
       }
-          
+      old = cur;
     }
     
     return 1;
