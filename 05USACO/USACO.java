@@ -113,12 +113,11 @@ public class USACO{
       }
       old = cur;
     }
-    System.out.println(toString(old));
 
     return old[R2][C2];
   }
   
-  public static  String toString(char[][] arr){
+  /* private static  String toString(char[][] arr){
     String sol = "";
     for (int i = 0; i < arr.length; i ++){
       sol+= "\n";
@@ -129,7 +128,7 @@ public class USACO{
     return sol;
   }
 
-      public static  String toString(int[][] arr){
+  private static  String toString(int[][] arr){
     String sol = "";
     for (int i = 0; i < arr.length; i ++){
       sol+= "\n";
@@ -138,7 +137,7 @@ public class USACO{
       }
     }
     return sol;
-  }
+    }*/
   
   public static void main (String[] args){
    try{
