@@ -69,6 +69,7 @@ public class USACO{
       return 72*72*depth;
     }
   
+
   public static int silver(String filename) throws FileNotFoundException{
     
     //------------Setup-------------
@@ -84,6 +85,8 @@ public class USACO{
     int[][] old = new int[N][M];
     int[] x = {0,0,1,-1};
     int[] y = {1,-1,0,0};
+
+    //-----------Create Map----------
     for (int i = 0; i < N; i++){
       String line = in.next();
       for (int j = 0; j < M; j++){
@@ -98,51 +101,33 @@ public class USACO{
     C2 = in.nextInt()-1;
     old[R1][C1] = 1;
 
-    for (int t = 0; t < T; t++){
-      cur = new int[N][M];
+    //--------------Solve---------
+    for (int t = 0; t < T; t++){ //Time limit
+
+      cur = new int[N][M]; //Reset current board
+
       for (int i = 0; i < N; i++){
         for (int j = 0; j < M; j++){
+
           if(map[i][j] != '*'){
+
             for (int k = 0; k < 4; k++){
+
               if(i+x[k] >= 0 && i+x[k] < N && j+y[k] >= 0 && j+y[k] < M){
                 cur[i][j] += old[i+x[k]][j+y[k]];
               }
+
             }
+
           }
+          
         }
       }
-      old = cur;
+      old = cur; //Update old
     }
 
+    //--------------Return Solution---------------
     return old[R2][C2];
-  }
-  
-  /* private static  String toString(char[][] arr){
-    String sol = "";
-    for (int i = 0; i < arr.length; i ++){
-      sol+= "\n";
-      for (int j = 0; j <arr[0].length; j++){
-        sol+= arr[i][j] + " ";
-      }
-    }
-    return sol;
-  }
-
-  private static  String toString(int[][] arr){
-    String sol = "";
-    for (int i = 0; i < arr.length; i ++){
-      sol+= "\n";
-      for (int j = 0; j <arr[0].length; j++){
-        sol+= arr[i][j] + " ";
-      }
-    }
-    return sol;
-    }*/
-  
-  public static void main (String[] args){
-   try{
-     System.out.println(bronze("d1.txt"));
-   }catch(FileNotFoundException e){}
   }
 
 }
