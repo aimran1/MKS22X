@@ -68,7 +68,7 @@ public class USACO{
       //----------------Return Solution-----------
       return 72*72*depth;
     }
-
+  
   public static int silver(String filename) throws FileNotFoundException{
     
     //------------Setup-------------
@@ -78,7 +78,7 @@ public class USACO{
     N = in.nextInt();
     M = in.nextInt();
     T = in.nextInt();
-
+    
     char[][] map = new char[N][M];
     int[][] cur = new int[N][M];
     int[][] old = new int[N][M];
@@ -90,7 +90,7 @@ public class USACO{
         map[i][j] = line.charAt(j);
       }
     }
-
+    
     int R1,C1,R2,C2;
     R1 = in.nextInt()-1;
     C1 = in.nextInt()-1;
@@ -102,22 +102,20 @@ public class USACO{
       cur = new int[N][M];
       for (int i = 0; i < N; i++){
         for (int j = 0; j < M; j++){
-          //cur[i][j] = 0;
-          int sol = 0;
-          for (int k = 0; k < 4; k++){
-            if(i+x[k] >= 0 && i+x[k] < N && j+y[k] >= 0 && j+y[k] < M){
-              cur[i][j] += old[i+x[k]][j+y[k]];
-              System.out.println(toString(old));
-
+          if(map[i][j] != '*'){
+            for (int k = 0; k < 4; k++){
+              if(i+x[k] >= 0 && i+x[k] < N && j+y[k] >= 0 && j+y[k] < M){
+                cur[i][j] += old[i+x[k]][j+y[k]];
+              }
             }
           }
         }
-
       }
       old = cur;
     }
-    
-    return 1;
+    System.out.println(toString(old));
+
+    return old[R2][C2];
   }
   
   public static  String toString(char[][] arr){
