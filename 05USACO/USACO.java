@@ -141,7 +141,7 @@ public class USACO{
   
   public static void main (String[] args){
    try{
-     System.out.println(silver("d2.txt"));
+     System.out.println(bronze("d1.txt"));
    }catch(FileNotFoundException e){}
   }
 
