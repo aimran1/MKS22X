@@ -14,11 +14,13 @@ public class Partition{
       if (data[i] <= data[0]){
         swap(data,i,start);
         start++;
+        i++;
       }
       else if (data[i] > data[0]){
         swap(data,i,end);
         end--;
       }
+
       System.out.println(Arrays.toString(data));
     }
 
