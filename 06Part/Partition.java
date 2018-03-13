@@ -20,8 +20,6 @@ public class Partition{
         swap(data,i,end);
         end--;
       }
-
-      System.out.println(Arrays.toString(data));
     }
 
     if(data[0] > data[start]){
@@ -30,7 +28,6 @@ public class Partition{
     else {
       swap(data,0,start-1);
     }
-          System.out.println(Arrays.toString(data));
 
     return index;
   }
