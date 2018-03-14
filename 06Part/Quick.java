@@ -6,9 +6,8 @@ public class Quick{
   public static int quickselect(int[] data, int k){
     int upper = data.length-1;
     int lower = 0;
-    int index = -1;
+    int index = Partition.partition(data,lower,upper);
     while(index != k){
-      index = Partition.partition(data,lower,upper);
       /* if (index == k){
         return data[k];
         }*/
@@ -18,6 +17,7 @@ public class Quick{
       else{
         lower = index + 1;
       }
+      index = Partition.partition(data,lower,upper);
     }
     System.out.println(Arrays.toString(data));
     System.out.println(data[k]);
