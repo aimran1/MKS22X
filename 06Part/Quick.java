@@ -8,9 +8,9 @@ public class Quick{
     int lower = 0;
     int index = Partition.partition(data,lower,upper);
     while(index != k){
-      /* if (index == k){
+      if (index == k){
         return data[k];
-        }*/
+      }
       if (index > k){
         upper = index - 1;
       }
@@ -19,8 +19,8 @@ public class Quick{
       }
       index = Partition.partition(data,lower,upper);
     }
-    System.out.println(Arrays.toString(data));
-    System.out.println(data[index]);
+    //  System.out.println(Arrays.toString(data));
+    // System.out.println(data[index]);
     return -1;
   }
 

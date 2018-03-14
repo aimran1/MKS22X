@@ -17,7 +17,7 @@ public class Partition{
         swap(data,start,end);
         end--;
       }
-      System.out.println(Arrays.toString(data));
+      //    System.out.println(Arrays.toString(data));
     }
 
     swap(data,0,end);
