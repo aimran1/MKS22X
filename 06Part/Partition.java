@@ -22,7 +22,7 @@ public class Partition{
 
     swap(data,0,end);
 
-    return index;
+    return end;
   }
 
   private static void swap(int[]ary,int a, int b){
