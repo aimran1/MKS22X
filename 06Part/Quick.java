@@ -14,13 +14,13 @@ public class Quick{
       if (index > k){
         upper = index - 1;
       }
-      else{
+      else if (index < k){
         lower = index + 1;
       }
       index = Partition.partition(data,lower,upper);
     }
     System.out.println(Arrays.toString(data));
-    System.out.println(data[k]);
+    System.out.println(data[index]);
     return -1;
   }
 
