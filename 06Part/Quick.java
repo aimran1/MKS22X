@@ -19,14 +19,18 @@ public class Quick{
       }
       index = Partition.partition(data,lower,upper);
     }
-    //  System.out.println(Arrays.toString(data));
-    // System.out.println(data[index]);
-    return -1;
+
+    return data[index];
   }
 
   public static void main(String[] args){
     int[] d =  {2,10,15,23,0,5};
+    quickselect(d,0);
+    quickselect(d,1);
+    quickselect(d,2);
+    quickselect(d,3);
     quickselect(d,4);
+    quickselect(d,5);
 
   }
 
