@@ -25,21 +25,15 @@ public class Partition{
         swap(data,start,end);
         end--;
       }
-      System.out.println(Arrays.toString(data));
     }
 
     swap(data,begin,end);
 
     if(equal != 0) {
       for (int i = 1; equal > 0; equal--,i++){
-        System.out.println("Begin+e: " + (begin+equal) +" End: " + (end-i) + " Equal: " + equal);
         swap(data,begin+equal,end-i);
-            System.out.println(Arrays.toString(data));
-
       }
     }
-
-    System.out.println(Arrays.toString(data));
 
     return end;
   }
@@ -50,10 +44,10 @@ public class Partition{
     ary[b] = c;
   }
 
-  public static void main(String[] args){
+    public static void main(String[] args){
     int[] d = {2,12,4,4,4,12354,545,4,54,5,8,8,8,21,4,545,4,854,12354,2,
                -94,25,3,3};
     partition(d,0,7);
-  }
+    }
 
 }
