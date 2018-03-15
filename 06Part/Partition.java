@@ -6,30 +6,40 @@ public class Partition{
   public static int partition(int[]data,int start,int end){
     Random ind = new Random();
     int index = ind.nextInt((end-start)+1) + start;
-    int equal = 1;
-    swap(data,0,index);
-
+    int begin = start;
+    swap(data,begin,index);
+    start++;
+    int equal = 0;
     end = data.length - 1;
+
     while (start <= end){
-      if (data[start] == data[0] && start == equal){
+      if (data[start] == data[begin]){
+        equal++;
+        swap(data,begin+equal,start);
         start++;
       }
-      else if (data[start] == data[0]){
-        swap(data,equal,start);
+      else if (data[start] < data[begin]){
         start++;
       }
-      else if (data[start] < data[0]){
-        start++;
-      }
-      else if (data[start] > data[0]){
+      else if (data[start] > data[begin]){
         swap(data,start,end);
         end--;
       }
       System.out.println(Arrays.toString(data));
     }
 
-    swap(data,0,end);
-      System.out.println(Arrays.toString(data));
+    swap(data,begin,end);
+
+    if(equal != 0) {
+      for (int i = 1; equal > 0; equal--,i++){
+        System.out.println("Begin+e: " + (begin+equal) +" End: " + (end-i) + " Equal: " + equal);
+        swap(data,begin+equal,end-i);
+            System.out.println(Arrays.toString(data));
+
+      }
+    }
+
+    System.out.println(Arrays.toString(data));
 
     return end;
   }
@@ -41,9 +51,9 @@ public class Partition{
   }
 
   public static void main(String[] args){
-    int[] d = {2,12,54,5,8,21,4,545,4,854,12354,2,
-               -94,25,3};
-    partition(d,3,7);
+    int[] d = {2,12,4,4,4,12354,545,4,54,5,8,8,8,21,4,545,4,854,12354,2,
+               -94,25,3,3};
+    partition(d,0,7);
   }
 
 }
