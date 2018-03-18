@@ -40,12 +40,12 @@ public class Partition{
   }
 
     public static void main(String[] args){
-	int[] d = new int[15];/* {2,12,4,4,4,12354,545,4,54,5,8,8,8,21,4,545,4,854,12354,2,
-		-94,25,3,3};*/
-  Random ind = new Random();
-  for (int i = 0; i < d.length; i++){
+      int[] d =  {2,12,4,4,4,12354,545,4,54,5,8,8,8,21,4,545,4,854,12354,2,
+                  -94,25,3,3};
+      // Random ind = new Random();
+  /* for (int i = 0; i < d.length; i++){
     d[i] = Math.abs(ind.nextInt(3));
-  }
+    }*/
   System.out.println("Primary: " + Arrays.toString(d));
     partition(d,0,d.length-1);
     }
