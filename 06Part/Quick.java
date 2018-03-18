@@ -32,8 +32,8 @@ public class Quick{
   private static void quickH(int[] ary, int lower, int upper){
     if (lower < upper){
       int[] i = partition(ary,lower,upper);
-      quickH(ary,lower,i[0]);
-      quickH(ary,i[1],upper);
+      quickH(ary,lower,i[0]-1);
+      quickH(ary,i[1]+1,upper);
     }
     System.out.println("mY: " + Arrays.toString(ary));
 
