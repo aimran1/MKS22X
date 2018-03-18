@@ -22,7 +22,19 @@ public class Quick{
     return data[index[0]];
   }
 
-  public static int[] partition(int[]data,int start,int end){
+
+  public static void quicksort(int[] ary){
+
+    quickH(ary,0,ary.length-1);
+
+  }
+
+  private static void quickH(int[] ary, int lower, int upper){
+
+  }
+
+
+  private static int[] partition(int[]data,int start,int end){
     Random ind = new Random();
     int[] range = new int[2];
     int index = ind.nextInt((end-start)+1) + start;
