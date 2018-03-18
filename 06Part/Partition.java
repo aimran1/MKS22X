@@ -6,43 +6,30 @@ public class Partition{
   public static int partition(int[]data,int start,int end){
     Random ind = new Random();
     int index = ind.nextInt((end-start)+1) + start;
+    int p = data[index];
     int begin = start;
-    swap(data,begin,index);
     start++;
-    int equal = 0;
     end = data.length - 1;
+    System.out.println("Chosen Number: " + data[index] + " Index: " + index);
 
+    swap(data,index,begin);
+    
     while (start <= end){
-      if (data[start+1] == data[begin]){
-	  /*equal++;
-        swap(data,begin,start-1);
-	begin = start - 1;*/
-	  begin = start;
-	  start++;
+      if (data[start] == p){
+        start++;
       }
-      else if (data[start] < data[begin]){
-	  swap(data,start,begin);
-	  start++;
-	  begin++;
+      else if (data[start] < p){
+        swap(data,start,begin);
+        begin++;
+        start++;
       }
       else{
         swap(data,start,end);
         end--;
       }
-          System.out.println(Arrays.toString(data));
-
     }
 
-
-    //swap(data,begin,end);
-
-    /*   if(equal != 0) {
-      for (int i = 1; equal > 0; equal--,i++){
-        swap(data,begin+equal,end-i);
-      }
-      }*/
-
-    System.out.println(Arrays.toString(data));
+    System.out.println("Sorted: " + Arrays.toString(data));
     return end;
   }
 
@@ -53,9 +40,13 @@ public class Partition{
   }
 
     public static void main(String[] args){
-	int[] d = new int[10];/* {2,12,4,4,4,12354,545,4,54,5,8,8,8,21,4,545,4,854,12354,2,
+	int[] d = new int[15];/* {2,12,4,4,4,12354,545,4,54,5,8,8,8,21,4,545,4,854,12354,2,
 		-94,25,3,3};*/
-	
+  Random ind = new Random();
+  for (int i = 0; i < d.length; i++){
+    d[i] = Math.abs(ind.nextInt(3));
+  }
+  System.out.println("Primary: " + Arrays.toString(d));
     partition(d,0,d.length-1);
     }
 
