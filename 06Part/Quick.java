@@ -18,7 +18,6 @@ public class Quick{
       index = partition(data,lower,upper);
     }
 
-    System.out.println(data[index[0]]);
     return data[index[0]];
   }
 
@@ -32,10 +31,7 @@ public class Quick{
       int[] i = partition(ary,lower,upper);
       quickH(ary,lower,i[0]-1);
       quickH(ary,i[1]+1,upper);
-    System.out.println("mY: " + Arrays.toString(ary));
-
     }
-
   }
 
 
@@ -77,20 +73,6 @@ public class Quick{
   }
 
   public static void main(String[] args){
-    int[] d =  {2,10,15,23,0,5,10,23,2};
-    // Arrays.sort(d);
-    //  System.out.println(Arrays.toString(d));
-
-    // partition(d,4,8);
-    // System.out.println(Arrays.toString(d));
-    //    System.out.println("Actual: " + Arrays.toString(d));
-    /*   quickselect(d,0);
-    quickselect(d,1);
-    quickselect(d,2);
-    quickselect(d,3);
-    quickselect(d,4);
-    quickselect(d,5);*/
-    quicksort(d);
 
   }
 
