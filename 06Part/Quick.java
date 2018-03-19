@@ -72,8 +72,4 @@ public class Quick{
     ary[b] = c;
   }
 
- public static void main(String[] args){
-
- }
-
 }
