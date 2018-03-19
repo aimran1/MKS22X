@@ -3,6 +3,7 @@ import java.io.*;
 
 public class Quick{
 
+  //-------------------QUICKSELECT--------------------
   public static int quickselect(int[] data, int k){
     int upper = data.length-1;
     int lower = 0;
@@ -21,7 +22,7 @@ public class Quick{
     return data[index[0]];
   }
 
-
+  //---------------QUICKSORT & QUICKHElPER-----------------
   public static void quicksort(int[] ary){
     quickH(ary,0,ary.length-1);
   }
@@ -34,8 +35,10 @@ public class Quick{
     }
   }
 
-
+  //--------------------------PARTITION------------------------
   private static int[] partition(int[]data,int start,int end){
+
+    //-----------Variables to keep track----------
     Random ind = new Random();
     int[] range = new int[2];
     int index = ind.nextInt((end-start)+1) + start;
@@ -66,6 +69,7 @@ public class Quick{
     return range;
   }
 
+  //---------------------SWAP-----------------------
   private static void swap(int[]ary,int a, int b){
     int c = ary[a];
     ary[a] = ary[b];
