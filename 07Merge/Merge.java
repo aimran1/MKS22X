@@ -21,32 +21,26 @@ public class Merge{
   }
 
   private static void merge(int[]data,int[]temp,int lo, int mid, int Umid, int hi){
-    int[] m = new int[data.length+temp.length];
     int i = lo;
     while(lo <= mid && Umid <= hi){
-	    if (data[lo] < temp[Umid]){
-        m[i] = data[lo];
+	    if (temp[lo] <= temp[Umid]){
+        data[i] = temp[lo];
         i++;
         lo++;
 	    }
-	    else if (data[lo] > temp[Umid]){
-        m[i] = temp[Umid];
+	    else if (temp[lo] > temp[Umid]){
+        data[i] = temp[Umid];
         i++;
         Umid++;
 	    }
     }
-    if (lo != mid){
-      for (;lo <= mid;lo++,i++){
-        m[i] = data[lo];
-      }
+    for (;lo <= mid;lo++,i++){
+        data[i] = temp[lo];
     }
-    else if (Umid != hi){
-      for (;Umid <= hi;Umid++,i++){
-        m[i] = temp[Umid];
-      }
+    
+    for (;Umid <= hi;Umid++,i++){
+      data[i] = temp[Umid];
     }
-    data = m;
-    System.out.println(Arrays.toString(m));
   }
     
 
@@ -56,7 +50,7 @@ public class Merge{
     // mergesort(l);
     // System.out.println(Arrays.toString(l));
     mergesort(d);
-    // System.out.println(Arrays.toString(d));
+    System.out.println(Arrays.toString(d));
   }
 
 }
