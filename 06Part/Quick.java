@@ -69,11 +69,37 @@ public class Quick{
     return range;
   }
 
-  //---------------------SWAP-----------------------
+  //---------------------Helper Functions-----------------------
   private static void swap(int[]ary,int a, int b){
     int c = ary[a];
     ary[a] = ary[b];
     ary[b] = c;
   }
 
+    
+    public static void insertionSort(int[] ary){
+	for (int num = 0; num < ary.length; num++){
+	    int ind = num;
+	    int temp = ary[num];
+	    for (int i = num-1; i >= 0 && ary[i] > temp; i--){
+		ary[i+1] = ary[i];
+		ind = i;
+	    }
+	    ary[ind] = temp;
+	}
+    }
+
+    public static void main(String[] args){
+	int size = Integer.parseInt(args[0]); 
+	int[] l = new int[size];
+	Random r = new Random();
+	for (int i = 0; i < size; i++){
+	    l[i] = r.nextInt(50);
+	}
+	int[] q = l;
+	Arrays.sort(q);
+	insertionSort(l);
+	System.out.println(l.equals(q));
+    }
+    
 }
