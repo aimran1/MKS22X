@@ -21,19 +21,22 @@ public class Merge{
   }
 
     private static void merge(int[]data,int[]temp,int lo, int mid, int Umid, int hi){
-    for(int i = lo;i < hi; i++){
+    for(int i = lo;i <= hi; i++){
 	if(lo <= mid){
 	    if (temp[lo] < temp[Umid]){
 		data[i] = temp[lo];
 		lo++;
 	    }
-	    else {
+	    else if(!(temp[lo] < temp[Umid] && Umid <= hi) && Umid <= hi){
 		data[i] = temp[Umid];
 		Umid++;
 	    }
 	}
+	else {
+	    data[i] = temp[Umid];
+	    Umid++;
+	}
     }
-    
     System.out.println(Arrays.toString(data));
   }
     
