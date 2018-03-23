@@ -3,8 +3,6 @@ import java.io.*;
 
 public class Merge{
 
- 
-
   public static void mergesort(int[] data){
     msort(data, new int[data.length], 0, data.length-1);
   }
@@ -23,29 +21,17 @@ public class Merge{
   private static void merge(int[]data,int[]temp,int lo, int mid, int Umid, int hi){
     int[] m = new int[data.length+temp.length];
     int i = lo;
-    while(lo <= mid && Umid <= hi){
-	    if (data[lo] < temp[Umid]){
-        m[i] = data[lo];
-        i++;
-        lo++;
-	    }
-	    else if (data[lo] > temp[Umid]){
-        m[i] = temp[Umid];
-        i++;
-        Umid++;
-	    }
+    while(lo <= mid){
+	if (temp[lo] <= temp[Umid]){
+	    data[i] = temp[lo];
+	    lo++;
+	}
+	else {
+	    data[i] = temp[Umid];
+	    Umid--;
+	}
+	i++;
     }
-    if (lo != mid){
-      for (;lo <= mid;lo++,i++){
-        m[i] = data[lo];
-      }
-    }
-    else if (Umid != hi){
-      for (;Umid <= hi;Umid++,i++){
-        m[i] = temp[Umid];
-      }
-    }
-    data = m;
     System.out.println(Arrays.toString(m));
   }
     
