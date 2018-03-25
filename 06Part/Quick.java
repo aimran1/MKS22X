@@ -90,27 +90,36 @@ public class Quick{
     }
 
     public static void main(String[] args){
-	for (int i = 0; 
-	int size = Integer.parseInt(args[0]); 
-	int[] l = new int[size];
-	int[] g = new int[size];
-	Random r = new Random();
-	for (int i = 0; i < size; i++){
-	    l[i] = r.nextInt(50);
-	    g[i] = l[i];
-	}
+	double startTime;
+	double endTime;
+	double start;
+	double end;
+	double iTime = 0;
+	double qTime = 1;
+	int i = 100;
+	//	for (;iTime < qTime;i++){ 
+	    int[] l = new int[i];
+	    int[] g = new int[i];
+	    Random r = new Random();
+	    for (int j = 0; j < i; i++){
+		l[j] = r.nextInt(50);
+		g[j] = l[j];
+	    }
+	    
+	    startTime = System.nanoTime();
+	    insertionSort(l);
+	    endTime = System.nanoTime();
+	    iTime = endTime - startTime;
+	    System.out.println("i: " + iTime);
 
-	double startTime = System.nanoTime();
-	insertionSort(l);
-	double endTime = System.nanoTime();
-	
-	System.out.println("INSERTION took " + (endTime - startTime) + " ");
+	    
+	    start = System.nanoTime();
+	    quicksort(g);
+	    end = System.nanoTime();
+	    qTime = end - start;
+	    System.out.println("q: " + qTime);
 
-	double start = System.nanoTime();
-	quicksort(g);
-	double end = System.nanoTime();
 	
-	System.out.println("Quick took " + (end - start) + " ");
+	System.out.println("i: " + i);
     }
-    
 }
