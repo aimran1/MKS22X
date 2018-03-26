@@ -88,38 +88,5 @@ public class Quick{
 	    ary[ind] = temp;
 	}
     }
-
-    public static void main(String[] args){
-	double startTime;
-	double endTime;
-	double start;
-	double end;
-	double iTime = 0;
-	double qTime = 1;
-	int i = 100;
-	//	for (;iTime < qTime;i++){ 
-	    int[] l = new int[i];
-	    int[] g = new int[i];
-	    Random r = new Random();
-	    for (int j = 0; j < i; i++){
-		l[j] = r.nextInt(50);
-		g[j] = l[j];
-	    }
-	    
-	    startTime = System.nanoTime();
-	    insertionSort(l);
-	    endTime = System.nanoTime();
-	    iTime = endTime - startTime;
-	    System.out.println("i: " + iTime);
-
-	    
-	    start = System.nanoTime();
-	    quicksort(g);
-	    end = System.nanoTime();
-	    qTime = end - start;
-	    System.out.println("q: " + qTime);
-
-	
-	System.out.println("i: " + i);
-    }
+    
 }
