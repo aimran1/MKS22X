@@ -3,6 +3,19 @@ public class MyLinkedList{
     Node last;
     int length;
 
+    public int get(int n){
+	Node c = first;
+	for (int i = 0; i < length; i++){
+	    if (i == n){
+		return c.getValue();
+	    }
+	    c = first.next();
+	}
+	return -1;
+    }
+
+    
+    
 }
 
 private class Node{
