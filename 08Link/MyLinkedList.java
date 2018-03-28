@@ -30,6 +30,12 @@ private class Node{
     Node next, prev;
     int data;
 
+    public Node(Node n, Node p, int d){
+	next = n;
+	prev = p;
+	data = d;
+    }
+    
     public Node next(){
 	return next;
     }
