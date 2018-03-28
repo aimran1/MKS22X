@@ -24,6 +24,12 @@ public class MyLinkedList{
 	}
     }
 
+    public int size(){
+	return size;
+    }
+
+    
+
 }
 
 private class Node{
