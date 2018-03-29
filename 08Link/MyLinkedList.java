@@ -4,8 +4,12 @@ import java.io.*;
 public class MyLinkedList{
     Node first;
     Node last;
-    int length;
+    int length; 
 
+    public MyLinkedList(int value){
+	first = new Node(value);
+    }
+    
     public int get(int n){
 	Node c = first;
 	for (int i = 0; i < length; i++){
@@ -29,6 +33,16 @@ public class MyLinkedList{
 
     public int size(){
 	return length;
+    }
+
+    public String toString(){
+	String ans = "";
+	Node c = start;
+	for (int i = 0; i < last; i++){
+	    ans += c.toString();
+	    c = c.next();
+	}
+	return ans;
     }
 
     private class Node{
@@ -68,7 +82,11 @@ public class MyLinkedList{
 	public String toString(){
 	    return "p:" + prev+ " c:" + data + " n:" + next;
 	}
-    }    
+    }
+
+    public static void main(String[] args){
+	MyLinkedList m = new MyLinkedList(3);
+    }
     
 }
 
