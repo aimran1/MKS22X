@@ -29,16 +29,22 @@ public class MyLinkedList{
 	return getNode(index).getValue();	
     }
 
-    public void set(int index, int value){
-	Node c = first;
+    public Integer set(int index, Integer value){
+	getNode(index).setValue(value);
+	return value;
+    }
+
+    public int indexOf(Integer value){
+	c = first;
 	for (int i = 0; i < length; i++){
-	    if (i == index){
-		c.setValue(value);
+	    if (c.getValue() == value){
+		return i;
 	    }
 	    c = c.getnext();
 	}
+	return -1;
     }
-
+    
     public int size(){
 	return length;
     }
