@@ -2,12 +2,13 @@ import java.util.*;
 import java.io.*;
 
 public class MyLinkedList{
-    Node first;
-    Node last;
-    int length; 
+    private Node first,  last;
+    private int length; 
 
-    public MyLinkedList(int value){
-	first = new Node(value);
+    public MyLinkedList(){
+	first = null;
+	last = null;
+	length = 0;
     }
     
     public int get(int n){
@@ -16,7 +17,7 @@ public class MyLinkedList{
 	    if (i == n){
 		return c.getValue();
 	    }
-	    c = c.next();
+	    c = c.getnext();
 	}
 	return -1;
     }
@@ -27,7 +28,7 @@ public class MyLinkedList{
 	    if (i == index){
 		c.setValue(value);
 	    }
-	    c = c.next();
+	    c = c.getnext();
 	}
     }
 
@@ -37,25 +38,25 @@ public class MyLinkedList{
 
     public String toString(){
 	String ans = "";
-	Node c = start;
-	for (int i = 0; i < last; i++){
-	    ans += c.toString();
-	    c = c.next();
+	Node c = first;
+	for (int i = 0; i < length; i++){
+	    ans += "(" + c.getValue() + ") ";
+	    c = c.getnext();
 	}
 	return ans;
     }
 
     private class Node{
-	Node next, prev;
-	int data;
+	private Node next, prev;
+	private Integer data;
 	
-	public Node(Node n, Node p, int d){
-	    next = n;
-	    prev = p;
+	public Node(Integer d){
+	    next = null;
+	    prev = null;
 	    data = d;
 	}
 	
-	public Node next(){
+	public Node getnext(){
 	    return next;
 	}
 	
@@ -63,7 +64,7 @@ public class MyLinkedList{
 	    next = a;
 	}
 	
-	public Node prev(){
+	public Node getprev(){
 	    return prev;
 	}
 	
@@ -80,12 +81,12 @@ public class MyLinkedList{
 	}
 	
 	public String toString(){
-	    return "p:" + prev+ " c:" + data + " n:" + next;
+	    return "" + data;
 	}
     }
 
     public static void main(String[] args){
-	MyLinkedList m = new MyLinkedList(3);
+	MyLinkedList m = new MyLinkedList();
     }
     
 }
