@@ -59,6 +59,17 @@ public class MyLinkedList{
 	return ans;
     }
 
+    public boolean add(Integer newData){
+	Node n = new Node(newData);
+	Node c = getNode(length);
+	n.setPrev(c);
+	n.setNext(n);
+	c.setNext(n);
+	last = n;
+	length += 1;
+	return true;
+    }
+
     private class Node{
 	private Node next, prev;
 	private Integer data;
