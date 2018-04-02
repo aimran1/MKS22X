@@ -2,18 +2,23 @@ import java.util.*;
 import java.io.*;
 
 public class MyLinkedList{
-    private Node first,  last;
+    private Node first, last;
     private int length; 
 
     public MyLinkedList(){
-	first = null;
-	last = null;
+	first = new Node(null);
+	last = first;
 	length = 0;
     }
     
     private Node getNode(int n){
 	Node c = first;
-	for (int i = 0; i < n; i++){
+
+	if(n == length){
+	    return last;
+	}
+	
+	for (;n > 0; n--){
 	    c = c.getnext();
 	}
 	return c;
@@ -61,15 +66,21 @@ public class MyLinkedList{
 
     public boolean add(Integer newData){
 	Node n = new Node(newData);
-	Node c = getNode(length);
-	n.setPrev(c);
-	n.setNext(n);
-	c.setNext(n);
-	last = n;
-	length += 1;
+	if (length == 0){
+	    first = n;
+	    last = n;
+	    length += 1;
+	}
+	else{
+	    Node c = getNode(length);
+	    n.setPrev(c);
+	    c.setNext(n);
+	    last = n;
+	    length += 1;
+	}
 	return true;
     }
-
+    
     private class Node{
 	private Node next, prev;
 	private Integer data;
@@ -111,6 +122,13 @@ public class MyLinkedList{
 
     public static void main(String[] args){
 	MyLinkedList m = new MyLinkedList();
+	Random n = new Random();
+	for (int i = 0; i < 10; i++){
+	    Integer l = n.nextInt(20);
+	    System.out.println(l);
+	    m.add(l);
+	}
+	System.out.println(m);
     }
     
 }
