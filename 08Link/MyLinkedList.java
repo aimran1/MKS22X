@@ -11,7 +11,7 @@ public class MyLinkedList{
 	length = 0;
     }
     
-    private Node get(int n){
+    private Node getNode(int n){
 	Node c = first;
 	for (int i = 0; i < n; i++){
 	    c = c.getnext();
@@ -23,6 +23,10 @@ public class MyLinkedList{
 	first = null;
 	last = null;
 	length = 0;
+    }
+
+    public Integer get(int index){
+	return getNode(index).getValue();	
     }
 
     public void set(int index, int value){
