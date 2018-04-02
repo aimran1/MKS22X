@@ -11,12 +11,18 @@ public class MyLinkedList{
 	length = 0;
     }
     
-    public Node get(int n){
+    private Node get(int n){
 	Node c = first;
 	for (int i = 0; i < n; i++){
 	    c = c.getnext();
 	}
 	return c;
+    }
+
+    public void clear(){
+	first = null;
+	last = null;
+	length = 0;
     }
 
     public void set(int index, int value){
