@@ -85,7 +85,7 @@ public class MyLinkedList{
 	    prev = b;
 	}
 	
-	public int getValue(){
+	public Integer getValue(){
 	    return data;
 	}
 	
