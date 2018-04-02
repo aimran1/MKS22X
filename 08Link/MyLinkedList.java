@@ -69,16 +69,24 @@ public class MyLinkedList{
 	if (length == 0){
 	    first = n;
 	    last = n;
-	    length += 1;
 	}
 	else{
 	    Node c = getNode(length);
 	    n.setPrev(c);
 	    c.setNext(n);
 	    last = n;
-	    length += 1;
 	}
+	length += 1;
 	return true;
+    }
+
+    public void add (int index, Integer value){
+	if (length == 0 || index == length){
+	    add(value);
+	}
+	else {
+	    
+	}
     }
     
     private class Node{
