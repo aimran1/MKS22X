@@ -37,7 +37,7 @@ public class MyLinkedList{
     public int indexOf(Integer value){
 	Node c = first;
 	for (int i = 0; i < length; i++){
-	    if (c.getValue() == value){
+	    if (c.getValue().equals(value)){
 		return i;
 	    }
 	    c = c.getnext();
