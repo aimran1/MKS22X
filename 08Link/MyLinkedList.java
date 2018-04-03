@@ -81,11 +81,24 @@ public class MyLinkedList{
     }
 
     public void add (int index, Integer value){
+	Node n = new Node(value);
 	if (length == 0 || index == length){
 	    add(value);
 	}
 	else {
-	    
+	    if (index == 0){
+		first.setPrev(n);
+		n.setNext(first);
+		first = n;
+	    }
+	    else{
+		Node c = getNode(index);
+		Node cp = c.getprev();
+		n.setNext(c);
+		n.setPrev(cp);
+		c.setPrev(n);
+		cp.setNext(n);
+	    }
 	}
     }
     
