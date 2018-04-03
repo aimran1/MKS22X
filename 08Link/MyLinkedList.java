@@ -99,6 +99,7 @@ public class MyLinkedList{
 		c.setPrev(n);
 		cp.setNext(n);
 	    }
+	    length += 1;
 	}
     }
     
@@ -146,10 +147,10 @@ public class MyLinkedList{
 	Random n = new Random();
 	for (int i = 0; i < 10; i++){
 	    Integer l = n.nextInt(20);
-	    System.out.println(l);
 	    m.add(l);
 	}
-	System.out.println(m);
+	m.add(5, 30303);
+       	System.out.println(m);
     }
     
 }
