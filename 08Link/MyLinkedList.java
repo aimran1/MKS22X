@@ -126,9 +126,26 @@ public class MyLinkedList{
 	return false;
     }
 
-    /* public boolean remove(int index){
-	
-       }*/
+    public boolean remove(int index){
+	Node n = getNode(index);
+	if (index >= 0 && index <= length){
+	    length -= 1;
+	    if (index == 0){
+		first = first.getnext();
+		return true;
+	    }
+	    else if (index == length){
+		last = last.getprev();
+		return true;
+	    }
+	    else {
+		n.getprev().setNext(n.getnext());
+		n.getnext().setPrev(n.getprev());
+		return true;
+	    }
+	}
+	return false;
+    }
     
     private class Node{
 	private Node next, prev;
@@ -177,10 +194,10 @@ public class MyLinkedList{
 	    m.add(l);
 	}
 
-	m.add(5, 30303);
+	//	m.add(5, 30303);
 	
        	System.out.println(m);
-	Integer f = new Integer(30303);
+	int f = 4;
 	
 	m.remove(f);
 	System.out.println(m);    
