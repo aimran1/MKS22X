@@ -107,13 +107,21 @@ public class MyLinkedList{
 	Node n;
 	int i = indexOf(value);
 	if (i > -1){
+	    n = getNode(i);
+	    length -= 1;	    
 	    if (i == 0){
 		first = first.getnext();
-	    }		
-	    n = getNode(i);
-	    n.getprev().setNext(n.getnext());
-	    n.getnext().setPrev(n.getprev());
-	    length -= 1;
+		return true;
+	    }
+	    else if (i == length){
+		last = last.getprev();
+		return true;
+	    }
+	    else {
+		n.getprev().setNext(n.getnext());
+		n.getnext().setPrev(n.getprev());
+		return true;
+	    }
 	}
 	return false;
     }
@@ -168,9 +176,9 @@ public class MyLinkedList{
 	    Integer l = n.nextInt(20);
 	    m.add(l);
 	}
-	m.add(10, 30303);
-	m.add(0, 30303);
 
+	m.add(5, 30303);
+	
        	System.out.println(m);
 	Integer f = new Integer(30303);
 	
