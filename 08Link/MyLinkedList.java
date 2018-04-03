@@ -107,7 +107,9 @@ public class MyLinkedList{
 	Node n;
 	int i = indexOf(value);
 	if (i > -1){
-	    
+	    if (i == 0){
+		first = first.getnext();
+	    }		
 	    n = getNode(i);
 	    n.getprev().setNext(n.getnext());
 	    n.getnext().setPrev(n.getprev());
@@ -166,8 +168,8 @@ public class MyLinkedList{
 	    Integer l = n.nextInt(20);
 	    m.add(l);
 	}
-	m.add(9, 30303);
-	m.add(5, 30303);
+	m.add(10, 30303);
+	m.add(0, 30303);
 
        	System.out.println(m);
 	Integer f = new Integer(30303);
