@@ -102,6 +102,22 @@ public class MyLinkedList{
 	    length += 1;
 	}
     }
+
+    public boolean remove(Integer value){
+	Node n;
+	int i = indexOf(value);
+	if (i > -1){
+	    n = getNode(i);
+	    n.getprev().setNext(n.getnext());
+	    n.getnext().setPrev(n.getprev());
+	    length -= 1;
+	}
+	return false;
+    }
+
+    /* public boolean remove(int index){
+	
+       }*/
     
     private class Node{
 	private Node next, prev;
