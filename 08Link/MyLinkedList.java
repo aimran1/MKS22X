@@ -5,12 +5,38 @@ public class MyLinkedList{
     private Node first, last;
     private int length; 
 
+    //Constructor
     public MyLinkedList(){
 	first = new Node(null);
 	last = first;
 	length = 0;
     }
+
+    //ToString
+    public String toString(){
+	String ans = "";
+	Node c = first;
+	for (int i = 0; i < length; i++){
+	    ans += "(" + c.getValue() + ") ";
+	    c = c.getnext();
+	}
+	return ans;
+    }
+
+    //Clear
+    public void clear(){
+	first = null;
+	last = null;
+	length = 0;
+    }
+
     
+    //Size
+    public int size(){
+	return length;
+    }
+
+    //Gets Node at index n
     private Node getNode(int n){
 	Node c = first;
 
@@ -24,21 +50,17 @@ public class MyLinkedList{
 	return c;
     }
 
-    public void clear(){
-	first = null;
-	last = null;
-	length = 0;
-    }
-
+    //Gets value of Node at index
     public Integer get(int index){
 	return getNode(index).getValue();	
     }
-
+    //Sets value of Node at index
     public Integer set(int index, Integer value){
 	getNode(index).setValue(value);
 	return value;
     }
 
+    //Returns index of value
     public int indexOf(Integer value){
 	Node c = first;
 	for (int i = 0; i < length; i++){
@@ -49,21 +71,9 @@ public class MyLinkedList{
 	}
 	return -1;
     }
-    
-    public int size(){
-	return length;
-    }
 
-    public String toString(){
-	String ans = "";
-	Node c = first;
-	for (int i = 0; i < length; i++){
-	    ans += "(" + c.getValue() + ") ";
-	    c = c.getnext();
-	}
-	return ans;
-    }
 
+    //-------------------Adds--------------------
     public boolean add(Integer newData){
 	Node n = new Node(newData);
 	if (length == 0){
@@ -103,6 +113,7 @@ public class MyLinkedList{
 	}
     }
 
+    //--------------------Removes-------------------
     public boolean remove(Integer value){
 	Node n;
 	int i = indexOf(value);
@@ -129,7 +140,9 @@ public class MyLinkedList{
 	}
 	return false;
     }
-    
+
+
+    //---------------------------NODE-------------------------
     private class Node{
 	private Node next, prev;
 	private Integer data;
@@ -139,27 +152,27 @@ public class MyLinkedList{
 	    prev = null;
 	    data = d;
 	}
-	
+
+	//Next
 	public Node getnext(){
 	    return next;
 	}
-	
 	public void setNext(Node a){
 	    next = a;
 	}
-	
+
+	//Previous
 	public Node getprev(){
 	    return prev;
 	}
-	
 	public void setPrev(Node b){
 	    prev = b;
 	}
-	
+
+	//Value
 	public Integer getValue(){
 	    return data;
 	}
-	
 	public void setValue(int n){
 	    data = n;
 	}
@@ -180,9 +193,7 @@ public class MyLinkedList{
 	m.add(10, 30303);
 	
        	System.out.println(m);
-        Integer f = new Integer(30303);
-	
-	m.remove(f);
+	m.clear();
 	System.out.println(m);    
     }
     
