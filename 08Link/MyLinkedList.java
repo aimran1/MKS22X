@@ -177,10 +177,10 @@ public class MyLinkedList{
 	    m.add(l);
 	}
 
-	//	m.add(5, 30303);
+	m.add(10, 30303);
 	
        	System.out.println(m);
-	int f = 4;
+        Integer f = new Integer(30303);
 	
 	m.remove(f);
 	System.out.println(m);    
