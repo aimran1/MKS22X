@@ -1,12 +1,12 @@
 import java.util.*;
 import java.io.*;
 
-public class MyLinkedListImproved<T>{
+public class MyLinkedList{
     private Node first, last;
     private int length; 
 
     //Constructor
-    public MyLinkedListImproved(){
+    public MyLinkedList(){
 	first = new Node(null);
 	last = first;
 	length = 0;
@@ -62,17 +62,17 @@ public class MyLinkedListImproved<T>{
     }
 
     //Gets value of Node at index
-    public T get(int index){
+    public Integer get(int index){
 	return getNode(index).getValue();	
     }
     //Sets value of Node at index
-    public T set(int index, T value){
+    public Integer set(int index, Integer value){
 	getNode(index).setValue(value);
 	return value;
     }
 
     //Returns index of value
-    public int indexOf(T value){
+    public int indexOf(Integer value){
 	Node c = first;
 	for (int i = 0; i < length; i++){
 	    if (c.getValue().equals(value)){
@@ -85,7 +85,7 @@ public class MyLinkedListImproved<T>{
 
 
     //-------------------Adds--------------------
-    public boolean add(T newData){
+    public boolean add(Integer newData){
 	Node n = new Node(newData);
 	if (length == 0){
 	    first = n;
@@ -101,7 +101,7 @@ public class MyLinkedListImproved<T>{
 	return true;
     }
 
-    public void add (int index, T value){
+    public void add (int index, Integer value){
 	Node n = new Node(value);
 	if (length == 0 || index == length){
 	    add(value);
@@ -125,7 +125,7 @@ public class MyLinkedListImproved<T>{
     }
 
     //--------------------Removes-------------------
-    public boolean remove(T value){
+    public boolean remove(Integer value){
 	Node n;
 	int i = indexOf(value);
         return remove(i);
@@ -156,9 +156,9 @@ public class MyLinkedListImproved<T>{
     //---------------------------NODE-------------------------
     private class Node{
 	private Node next, prev;
-	private T data;
+	private Integer data;
 	
-	public Node(T d){
+	public Node(Integer d){
 	    next = null;
 	    prev = null;
 	    data = d;
@@ -181,10 +181,10 @@ public class MyLinkedListImproved<T>{
 	}
 
 	//Value
-	public T getValue(){
+	public Integer getValue(){
 	    return data;
 	}
-	public void setValue(T n){
+	public void setValue(int n){
 	    data = n;
 	}
 	
@@ -193,25 +193,5 @@ public class MyLinkedListImproved<T>{
 	}
     }
 
-    
-
-    public static void main(String[] args){
-	MyLinkedListImproved<String> m = new MyLinkedListImproved<>();
-	Random n = new Random();
-	//for (int i = 0; i < 10; i++){
-	    // Integer l = n.nextInt(20);
-	// m.add(i);
-	    //	}
-	m.add("dog");
-	m.add("ca");
-	m.add("go");
-	m.add("fish");
-	m.add("la");
-	m.add(0,"st");
-	m.add(5,"rt");
-
-       	System.out.println(m);
-	System.out.println(m.toStringR());    
-    }
     
 }
