@@ -23,6 +23,7 @@ public class MyLinkedList{
 	return ans;
     }
 
+    //Reverse
     public String toStringR(){
 	String ans = "";
 	Node c = last;
