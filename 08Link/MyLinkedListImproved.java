@@ -1,12 +1,12 @@
 import java.util.*;
 import java.io.*;
 
-public class MyLinkedList{
+public class MyLinkedListImproved<T>{
     private Node first, last;
     private int length; 
 
     //Constructor
-    public MyLinkedList(){
+    public MyLinkedListImproved(){
 	first = new Node(null);
 	last = first;
 	length = 0;
@@ -193,7 +193,7 @@ public class MyLinkedList{
 	}
     }
 
-    public static void main(String[] args){
+    /*  public static void main(String[] args){
 	MyLinkedList m = new MyLinkedList();
 	Random n = new Random();
 	for (int i = 0; i < 10; i++){
@@ -203,6 +203,6 @@ public class MyLinkedList{
 	
        	System.out.println(m);
 	System.out.println(m.toStringR());    
-    }
+	}*/
     
 }

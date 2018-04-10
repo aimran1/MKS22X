@@ -23,6 +23,7 @@ public class MyLinkedList{
 	return ans;
     }
 
+    //Reverse
     public String toStringR(){
 	String ans = "";
 	Node c = last;
@@ -192,7 +193,7 @@ public class MyLinkedList{
 	}
     }
 
-    public static void main(String[] args){
+    /*  public static void main(String[] args){
 	MyLinkedList m = new MyLinkedList();
 	Random n = new Random();
 	for (int i = 0; i < 10; i++){
@@ -202,6 +203,6 @@ public class MyLinkedList{
 	
        	System.out.println(m);
 	System.out.println(m.toStringR());    
-    }
+	}*/
     
 }
