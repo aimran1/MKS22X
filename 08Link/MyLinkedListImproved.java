@@ -62,17 +62,17 @@ public class MyLinkedListImproved<T>{
     }
 
     //Gets value of Node at index
-    public Integer get(int index){
+    public T get(int index){
 	return getNode(index).getValue();	
     }
     //Sets value of Node at index
-    public Integer set(int index, Integer value){
+    public T set(int index, T value){
 	getNode(index).setValue(value);
 	return value;
     }
 
     //Returns index of value
-    public int indexOf(Integer value){
+    public int indexOf(T value){
 	Node c = first;
 	for (int i = 0; i < length; i++){
 	    if (c.getValue().equals(value)){
@@ -85,7 +85,7 @@ public class MyLinkedListImproved<T>{
 
 
     //-------------------Adds--------------------
-    public boolean add(Integer newData){
+    public boolean add(T newData){
 	Node n = new Node(newData);
 	if (length == 0){
 	    first = n;
@@ -101,7 +101,7 @@ public class MyLinkedListImproved<T>{
 	return true;
     }
 
-    public void add (int index, Integer value){
+    public void add (int index, T value){
 	Node n = new Node(value);
 	if (length == 0 || index == length){
 	    add(value);
@@ -125,7 +125,7 @@ public class MyLinkedListImproved<T>{
     }
 
     //--------------------Removes-------------------
-    public boolean remove(Integer value){
+    public boolean remove(T value){
 	Node n;
 	int i = indexOf(value);
         return remove(i);
@@ -156,9 +156,9 @@ public class MyLinkedListImproved<T>{
     //---------------------------NODE-------------------------
     private class Node{
 	private Node next, prev;
-	private Integer data;
+	private T data;
 	
-	public Node(Integer d){
+	public Node(T d){
 	    next = null;
 	    prev = null;
 	    data = d;
@@ -181,10 +181,10 @@ public class MyLinkedListImproved<T>{
 	}
 
 	//Value
-	public Integer getValue(){
+	public T getValue(){
 	    return data;
 	}
-	public void setValue(int n){
+	public void setValue(T n){
 	    data = n;
 	}
 	
@@ -193,16 +193,23 @@ public class MyLinkedListImproved<T>{
 	}
     }
 
-    /*  public static void main(String[] args){
-	MyLinkedList m = new MyLinkedList();
+    public static void main(String[] args){
+	MyLinkedListImproved<String> m = new MyLinkedListImproved<>();
 	Random n = new Random();
-	for (int i = 0; i < 10; i++){
-	    Integer l = n.nextInt(20);
-	    m.add(l);
-	}
-	
+	//for (int i = 0; i < 10; i++){
+	    // Integer l = n.nextInt(20);
+	// m.add(i);
+	    //	}
+	m.add("dog");
+	m.add("ca");
+	m.add("go");
+	m.add("fish");
+	m.add("la");
+	m.add(0,"st");
+	m.add(5,"rt");
+
        	System.out.println(m);
 	System.out.println(m.toStringR());    
-	}*/
+    }
     
 }
