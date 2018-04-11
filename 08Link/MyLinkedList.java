@@ -207,17 +207,4 @@ public class MyLinkedList{
 	    return "" + data;
 	}
     }
-
-    /*  public static void main(String[] args){
-	MyLinkedList m = new MyLinkedList();
-	Random n = new Random();
-	for (int i = 0; i < 10; i++){
-	    Integer l = n.nextInt(20);
-	    m.add(l);
-	}
-	
-       	System.out.println(m);
-	System.out.println(m.toStringR());    
-	}*/
-    
 }
