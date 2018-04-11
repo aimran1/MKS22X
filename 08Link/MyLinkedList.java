@@ -151,7 +151,6 @@ public class MyLinkedList{
 	}
 	Node n = getNode(index);
 	Integer v = n.getValue();
-	//	if (index >= 0 && index < length){
 	length -= 1;
 	if (index == 0){
 	    first = first.getnext();
@@ -163,7 +162,6 @@ public class MyLinkedList{
 	    n.getprev().setNext(n.getnext());
 	    n.getnext().setPrev(n.getprev());
 	}
-	//}
 	return v;
     }
 
