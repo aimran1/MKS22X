@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class MyLinkedListImproved<T>{
+public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T>{
     private Node first, last;
     private int length; 
 
@@ -205,4 +205,35 @@ public class MyLinkedListImproved<T>{
 	    return "" + data;
 	}
     }
+
+    //------------------Iterator------------------
+
+    public Iterator<T> iterator(){
+	return new Literator(first);
+    }
+    
+    private class Literator implements Iterator<T>{
+	Node current;
+
+	public Literator(Node n){
+	    current = n; 
+	}
+
+	public boolean hasNext(){
+	    if (current == null){
+		return false; 
+	    }
+	    return true;
+	}
+
+	public T next(){
+	    if (hasNext()){
+		T value = current.getValue();
+		current = current.getnext();
+		return value;
+	    }
+	    return null;
+	}
+    }
+    
 }
