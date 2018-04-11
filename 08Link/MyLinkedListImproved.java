@@ -63,10 +63,16 @@ public class MyLinkedListImproved<T>{
 
     //Gets value of Node at index
     public T get(int index){
+	if (index < 0 || index >= length){
+	    throw new IndexOutOfBoundsException();
+	}
 	return getNode(index).getValue();	
     }
     //Sets value of Node at index
     public T set(int index, T value){
+	if (index < 0 || index >= length){
+	    throw new IndexOutOfBoundsException();
+	}
 	getNode(index).setValue(value);
 	return value;
     }
@@ -102,6 +108,9 @@ public class MyLinkedListImproved<T>{
     }
 
     public void add (int index, T value){
+	if (index < 0 || index > length){
+	    throw new IndexOutOfBoundsException();
+	}
 	Node n = new Node(value);
 	if (length == 0 || index == length){
 	    add(value);
@@ -128,28 +137,32 @@ public class MyLinkedListImproved<T>{
     public boolean remove(T value){
 	Node n;
 	int i = indexOf(value);
-        return remove(i);
+        try{
+	    remove(i);
+	    return true;
+	}catch(IndexOutOfBoundsException e){
+	    return false;
+	}
     }
 
-    public boolean remove(int index){
-	Node n = getNode(index);
-	if (index >= 0 && index <= length){
-	    length -= 1;
-	    if (index == 0){
-		first = first.getnext();
-		return true;
-	    }
-	    else if (index == length){
-		last = last.getprev();
-		return true;
-	    }
-	    else {
-		n.getprev().setNext(n.getnext());
-		n.getnext().setPrev(n.getprev());
-		return true;
-	    }
+    public T remove(int index){
+	if (index < 0 || index >= length){
+	    throw new IndexOutOfBoundsException();
 	}
-	return false;
+	Node n = getNode(index);
+	T v = n.getValue();
+	length -= 1;
+	if (index == 0){
+	    first = first.getnext();
+	}
+	else if (index == length){
+	    last = last.getprev();
+	}
+	else {
+	    n.getprev().setNext(n.getnext());
+	    n.getnext().setPrev(n.getprev());
+	}
+	return v;
     }
 
 
@@ -192,26 +205,4 @@ public class MyLinkedListImproved<T>{
 	    return "" + data;
 	}
     }
-
-    
-
-    public static void main(String[] args){
-	MyLinkedListImproved<String> m = new MyLinkedListImproved<>();
-	Random n = new Random();
-	//for (int i = 0; i < 10; i++){
-	    // Integer l = n.nextInt(20);
-	// m.add(i);
-	    //	}
-	m.add("dog");
-	m.add("ca");
-	m.add("go");
-	m.add("fish");
-	m.add("la");
-	m.add(0,"st");
-	m.add(5,"rt");
-
-       	System.out.println(m);
-	System.out.println(m.toStringR());    
-    }
-    
 }
