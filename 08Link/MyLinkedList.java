@@ -145,23 +145,21 @@ public class MyLinkedList{
 	    throw new IndexOutofBoundsException();
 	}
 	Node n = getNode(index);
-	if (index >= 0 && index <= length){
-	    length -= 1;
-	    if (index == 0){
-		first = first.getnext();
-		return true;
-	    }
-	    else if (index == length){
-		last = last.getprev();
-		return true;
-	    }
-	    else {
-		n.getprev().setNext(n.getnext());
-		n.getnext().setPrev(n.getprev());
-		return true;
-	    }
+	Integer v = n.getValue();
+	//	if (index >= 0 && index < length){
+	length -= 1;
+	if (index == 0){
+	    first = first.getnext();
 	}
-	return false;
+	else if (index == length){
+	    last = last.getprev();
+	}
+	else {
+	    n.getprev().setNext(n.getnext());
+	    n.getnext().setPrev(n.getprev());
+	}
+	//}
+	return v;
     }
 
 
