@@ -270,5 +270,14 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	    return null;
 	}
     }
+
+    public static void main(String[] args){
+	MyLinkedListImproved<Integer> t = new MyLinkedListImproved<>();
+	for (int i = 0; i < 11; i++){
+	    t.add(i);
+	}
+	System.out.println(t);
+	System.out.println(t.max());
+    }
     
 }
