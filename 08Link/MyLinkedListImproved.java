@@ -165,7 +165,22 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	return v;
     }
 
-
+    //---------------------MAX & MIN--------------------------
+    public int max(){
+	Literator it = iterator();
+	T max = it.next();
+	int index = 0;
+	int i = 0;
+	while(it.hasNext()){
+	    if (it.next().compareTo(max) > 0){
+		max = it.next();
+		index = i;
+	    }
+	    i++;
+	}
+	return index;
+    }
+    
     //---------------------------NODE-------------------------
     private class Node{
 	private Node next, prev;
