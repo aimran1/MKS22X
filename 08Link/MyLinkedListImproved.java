@@ -180,6 +180,21 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	}
 	return index;
     }
+
+    public int min(){
+	Literator it = iterator();
+	T min = it.next();
+	int index = 0;
+	int i = 0;
+	while(it.hasNext()){
+	    if (it.next().compareTo(min) < 0){
+		min = it.next();
+		index = i;
+	    }
+	    i++;
+	}
+	return index;
+    }
     
     //---------------------------NODE-------------------------
     private class Node{
