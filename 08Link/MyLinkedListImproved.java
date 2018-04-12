@@ -167,7 +167,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 
     //---------------------MAX & MIN--------------------------
     public int max(){
-	Literator it = iterator();
+        Iterator<T> it = iterator();
 	T max = it.next();
 	int index = 0;
 	int i = 0;
@@ -182,7 +182,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     }
 
     public int min(){
-	Literator it = iterator();
+	Iterator<T> it = iterator();
 	T min = it.next();
 	int index = 0;
 	int i = 0;
@@ -236,6 +236,11 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	}
     }
 
+    //Extend
+    public void extend(MyLinkedListImproved<T> other){
+	
+    }
+    
     //------------------Iterator------------------
 
     public Iterator<T> iterator(){
@@ -251,7 +256,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 
 	public boolean hasNext(){
 	    if (current == null){
-		return false; 
+		throw new NoSuchElementException(); 
 	    }
 	    return true;
 	}
