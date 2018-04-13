@@ -256,18 +256,25 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 
 	public boolean hasNext(){
 	    if (current == null){
-		throw new NoSuchElementException(); 
+		return false;
 	    }
+	    System.out.println(current);
+	    System.out.println(current.getnext());
+	    System.out.println(true);
 	    return true;
 	}
 
 	public T next(){
-	    if (hasNext()){
-		T value = current.getValue();
-		current = current.getnext();
-		return value;
+	    T ans = null;
+	    try{
+		if (hasNext()){		    
+		    ans = current.getValue();
+		}
+	    }catch (NoSuchElementException e){
+		System.exit(0);
 	    }
-	    return null;
+	    current = current.getnext();
+	    return ans;
 	}
     }
 
