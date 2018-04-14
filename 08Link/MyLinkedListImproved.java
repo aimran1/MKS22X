@@ -167,13 +167,12 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 
     //---------------------MAX & MIN--------------------------
     public int max(){
-        Iterator<T> it = iterator();
-	T max = it.next();
-	int index = 0;
+	// Iterator<T> it = iterator();
+	T max = first.getValue();
+	int index = -1;
 	int i = 0;
-	while(it.hasNext()){
-	    if (it.next().compareTo(max) > 0){
-		max = it.next();
+	for (T m:this){
+	    if(m.compareTo(max) > 0){
 		index = i;
 	    }
 	    i++;
@@ -184,11 +183,16 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     public int min(){
 	Iterator<T> it = iterator();
 	T min = it.next();
+	System.out.println(min);
 	int index = 0;
 	int i = 0;
 	while(it.hasNext()){
 	    if (it.next().compareTo(min) < 0){
+	System.out.println(min);
+
 		min = it.next();
+			System.out.println(min);
+
 		index = i;
 	    }
 	    i++;
@@ -273,11 +277,12 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 
     public static void main(String[] args){
 	MyLinkedListImproved<Integer> t = new MyLinkedListImproved<>();
-	for (int i = 5; i < 11; i++){
-	    t.add(i);
+	Random j = new Random();
+	for (int i = 0; i < 11; i++){
+	    t.add(j.nextInt(20));
 	}
 	System.out.println(t);
-	System.out.println(t.min());
+	System.out.println(t.max());
     }
     
 }
