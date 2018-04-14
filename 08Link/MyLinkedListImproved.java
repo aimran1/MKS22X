@@ -173,6 +173,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	int i = 0;
 	for (T m:this){
 	    if(m.compareTo(max) > 0){
+		max = m;
 		index = i;
 	    }
 	    i++;
