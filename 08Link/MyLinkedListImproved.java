@@ -184,18 +184,15 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     }
 
     public int min(){
-	Iterator<T> it = iterator();
-	T min = it.next();
-	System.out.println(min);
+	if (size() < 1){
+	    return -1;
+	}
+	T min = first.getValue();
 	int index = 0;
 	int i = 0;
-	while(it.hasNext()){
-	    if (it.next().compareTo(min) < 0){
-	System.out.println(min);
-
-		min = it.next();
-			System.out.println(min);
-
+	for (T m:this){
+	    if(m.compareTo(min) < 0){
+		min = m;
 		index = i;
 	    }
 	    i++;
@@ -285,7 +282,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	    t.add(j.nextInt(20));
 	    }*/
 	System.out.println(t);
-	System.out.println(t.max());
+	System.out.println(t.min());
     }
     
 }
