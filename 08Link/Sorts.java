@@ -6,26 +6,30 @@ public class Sorts{
 	@SuppressWarnings("unchecked") MyLinkedListImproved<Integer>[] arr = new MyLinkedListImproved[10];
 	int length = data.size();
 	Integer max = data.max();
-	int dig = numDigits(max);
 	int factor = 1;
 	for (int i = 0; i < 10; i++){
 	    arr[i] = new MyLinkedListImproved<Integer>(); 
 	}
 	
-	for (int n = 1; n <= dig; n++){
+	for (int n = 1; n <= numDigits(data.max()); n++){
+	    System.out.println(n);
+	    System.out.println(max);
+	    System.out.println(numDigits(data.max()));
 	    for (Integer m:data){
-		Integer loc = m/factor%10;
-		arr[loc].add(m);
+		System.out.println("_________________");
+		System.out.println(m/factor%10);
 		System.out.println(m);
+		System.out.println("_________________");
+		arr[m/factor%10].add(m);
 	    }
 	    factor = factor * 10;
+	    data.clear();
+	    for (int i = 0; i < 10; i++){
+		data.extend(arr[i]);
+		arr[i].clear();
+	    }
+	    
 	}
-	data.clear();
-	for (int i = 0; i < 10; i++){
-	    data.extend(arr[i]);
-	}
-	System.out.println(data);
-
     }
 	
     private static int numDigits(Integer num){
@@ -45,6 +49,7 @@ public class Sorts{
 	}
 	System.out.println(l);
 	radixsort(l);
+	System.out.println(l);
     }
 }
 
