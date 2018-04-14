@@ -21,6 +21,9 @@ public class Sorts{
 	    }
 	    factor = factor * 10;
 	}
+	for (int i = 0; i < 10; i++){
+	    data.extend(arr[i]);
+	}
 
 	/*	String ans = "";
 	for (int i = 0; i < 10;i++){
