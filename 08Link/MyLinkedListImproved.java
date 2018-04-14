@@ -167,9 +167,11 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 
     //---------------------MAX & MIN--------------------------
     public int max(){
-	// Iterator<T> it = iterator();
+	if (size() < 1){
+	    return -1;
+	}
 	T max = first.getValue();
-	int index = -1;
+	int index = 0;
 	int i = 0;
 	for (T m:this){
 	    if(m.compareTo(max) > 0){
@@ -279,9 +281,9 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     public static void main(String[] args){
 	MyLinkedListImproved<Integer> t = new MyLinkedListImproved<>();
 	Random j = new Random();
-	for (int i = 0; i < 11; i++){
+	/*	for (int i = 0; i < 11; i++){
 	    t.add(j.nextInt(20));
-	}
+	    }*/
 	System.out.println(t);
 	System.out.println(t.max());
     }
