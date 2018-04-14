@@ -258,10 +258,6 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	}
     }
 
-    //Extend
-    public void extend(MyLinkedListImproved<T> other){
-	
-    }
     
     //------------------Iterator------------------
 
