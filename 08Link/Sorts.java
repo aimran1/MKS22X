@@ -5,16 +5,15 @@ public class Sorts{
     public static void radixsort(MyLinkedListImproved<Integer> data){
 	@SuppressWarnings("unchecked") MyLinkedListImproved<Integer>[] arr = new MyLinkedListImproved[10];
 	int length = data.size();
-	Integer max = data.max();
+	Integer max = data.get(data.max());
 	int factor = 1;
 	for (int i = 0; i < 10; i++){
 	    arr[i] = new MyLinkedListImproved<Integer>(); 
 	}
 	
-	for (int n = 1; n <= numDigits(data.max()); n++){
+	for (int n = 1; n <= numDigits(max); n++){
 	    System.out.println(n);
 	    System.out.println(max);
-	    System.out.println(numDigits(data.max()));
 	    for (Integer m:data){
 		System.out.println("_________________");
 		System.out.println(m/factor%10);
