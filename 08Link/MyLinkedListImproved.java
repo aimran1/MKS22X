@@ -258,21 +258,14 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	    if (current == null){
 		return false;
 	    }
-	    System.out.println(current);
-	    System.out.println(current.getnext());
-	    System.out.println(true);
 	    return true;
 	}
 
 	public T next(){
-	    T ans = null;
-	    try{
-		if (hasNext()){		    
-		    ans = current.getValue();
-		}
-	    }catch (NoSuchElementException e){
-		System.exit(0);
+	    if (!hasNext()){		    
+		throw new NoSuchElementException();
 	    }
+	    T ans = current.getValue();
 	    current = current.getnext();
 	    return ans;
 	}
