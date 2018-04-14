@@ -17,18 +17,15 @@ public class Sorts{
 		Integer loc = m/factor%10;
 		arr[loc].add(m);
 		System.out.println(m);
-		System.out.println(Arrays.toString(arr));
 	    }
 	    factor = factor * 10;
 	}
+	data.clear();
 	for (int i = 0; i < 10; i++){
 	    data.extend(arr[i]);
 	}
+	System.out.println(data);
 
-	/*	String ans = "";
-	for (int i = 0; i < 10;i++){
-	    ans += "" + i +arr[i] + "\n";
-	    }*/
     }
 	
     private static int numDigits(Integer num){
