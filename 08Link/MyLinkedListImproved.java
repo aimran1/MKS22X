@@ -290,11 +290,12 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     public static void main(String[] args){
 	MyLinkedListImproved<Integer> t = new MyLinkedListImproved<>();
 	Random j = new Random();
-	/*	for (int i = 0; i < 11; i++){
-	    t.add(j.nextInt(20));
-	    }*/
+	for (int i = 0; i < 11; i++){
+	    t.add(i);
+	}
 	System.out.println(t);
-	System.out.println(t.min());
+	System.out.println(t.remove(5));
+	System.out.println(t);
     }
     
 }

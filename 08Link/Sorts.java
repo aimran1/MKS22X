@@ -16,6 +16,9 @@ public class Sorts{
 		data.remove(i);
 	    }
 	}
+	if(data.last.getValue() < 0){
+	    data.remove(data.last.getValue());
+	}
 	System.out.println(neg);
 	for (int n = 1; n <= numDigits(max); n++){
 	    for (Integer m:data){
