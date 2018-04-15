@@ -4,12 +4,20 @@ import java.io.*;
 public class Sorts{
     public static void radixsort(MyLinkedListImproved<Integer> data){
 	@SuppressWarnings("unchecked") MyLinkedListImproved<Integer>[] arr = new MyLinkedListImproved[10];
+	MyLinkedListImproved<Integer> neg = new MyLinkedListImproved<>();
 	int length = data.size();
 	Integer max = data.get(data.max());
 	int factor = 1;
 	for (int i = 0; i < 10; i++){
 	    arr[i] = new MyLinkedListImproved<Integer>();
 	}
+	for (Integer m:data){
+	    if(m<0){
+		neg.add(m);
+		data.remove(m);
+	    }
+	}
+	neg = radixN(neg);
 	for (int n = 1; n <= numDigits(max); n++){
 	    for (Integer m:data){
 		arr[m/factor%10].add(m);
@@ -20,11 +28,12 @@ public class Sorts{
 		data.extend(arr[i]);
 		arr[i].clear();
 	    }
-	    
 	}
+	neg.extend(data);
+	data = neg;
     }
 
-    private static void radixN(MyLinkedListImproved<Integer> data){
+    private static MyLinkedListImproved<Integer> radixN(MyLinkedListImproved<Integer> data){
 	@SuppressWarnings("unchecked") MyLinkedListImproved<Integer>[] arr = new MyLinkedListImproved[10];
 	int length = data.size();
 	Integer min = data.get(data.min());
@@ -34,9 +43,6 @@ public class Sorts{
 	}
 	for (int n = 1; n <= numDigits(min); n++){
 	    for (Integer m:data){
-		System.out.println(m);
-		System.out.println(9 + m/factor%10);
-		System.out.println("__________________");
 		arr[9 + m/factor%10].add(m);
 	    }
 	    factor = factor * 10;
@@ -45,8 +51,8 @@ public class Sorts{
 		data.extend(arr[i]);
 		arr[i].clear();
 	    }
-	    
 	}
+	return data;
     }
 
     
@@ -69,7 +75,7 @@ public class Sorts{
 	    l.add(-1 * m.nextInt(200));
 	}
 	System.out.println(l);
-	radixN(l);
+	radixsort(l);
 	System.out.println(l);
     }
     /* public static void main(String[] args) {
