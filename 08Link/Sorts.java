@@ -5,19 +5,21 @@ public class Sorts{
     public static void radixsort(MyLinkedListImproved<Integer> data){
 	@SuppressWarnings("unchecked") MyLinkedListImproved<Integer>[] arr = new MyLinkedListImproved[10];
 	MyLinkedListImproved<Integer> neg = new MyLinkedListImproved<>();
-	int length = data.size();
 	Integer max = data.get(data.max());
 	int factor = 1;
 	for (int i = 0; i < 10; i++){
 	    arr[i] = new MyLinkedListImproved<Integer>();
 	}
-	for (Integer m:data){
-	    if(m<0){
-		neg.add(m);
-		data.remove(m);
+	for (Integer i:data){
+	    System.out.println(i);
+	    if(i<0){
+		System.out.println("inside");
+		neg.add(i);
+		data.remove(i);
 	    }
 	}
 	neg = radixN(neg);
+	System.out.println(neg);
 	for (int n = 1; n <= numDigits(max); n++){
 	    for (Integer m:data){
 		arr[m/factor%10].add(m);
@@ -34,8 +36,10 @@ public class Sorts{
     }
 
     private static MyLinkedListImproved<Integer> radixN(MyLinkedListImproved<Integer> data){
+	if(data.size() == 0){
+	    return data;
+	}
 	@SuppressWarnings("unchecked") MyLinkedListImproved<Integer>[] arr = new MyLinkedListImproved[10];
-	int length = data.size();
 	Integer min = data.get(data.min());
 	int factor = 1;
 	for (int i = 0; i < 10; i++){
@@ -72,15 +76,15 @@ public class Sorts{
 	MyLinkedListImproved<Integer> l = new MyLinkedListImproved<>();
 	Random m = new Random();
 	for(int i = 0; i < 10; i++){
-	    l.add(-1 * m.nextInt(200));
+	    l.add(1 * m.nextInt(200));
 	}
 	System.out.println(l);
 	radixsort(l);
 	System.out.println(l);
     }
-    /* public static void main(String[] args) {
+    /*  public static void main(String[] args) {
     //-----------SORTING POSITIVES-----------
-       // System.out.println("TESTING ON POSITIVE INTEGERS ONLY:");
+        System.out.println("TESTING ON POSITIVE INTEGERS ONLY:");
     MyLinkedListImproved<Integer> data = new MyLinkedListImproved<>();
     int[] correctData = new int[1000];
 
@@ -98,27 +102,27 @@ public class Sorts{
 
     //Sorts the array
     Arrays.sort(correctData);
-    //  System.out.println("Sort completed in " + (end - start) + " seconds");
+    System.out.println("Sort completed in " + (end - start) + " seconds");
 
     //Checks if data is properly sorted
     boolean hasError = false;
     int index = 0;
     for(Integer x: data){
       if(!(x.equals(correctData[index]))){
-	  //    System.out.println("THERE IS AN ERROR");
-	  //     System.out.println("Index of error: " + index);
+	      System.out.println("THERE IS AN ERROR");
+	       System.out.println("Index of error: " + index);
         hasError = true;
       }
       index++;
     }
 
     if(!(hasError)){
-	//     System.out.println("Your LinkedList with all positive integers is properly sorted.");
+	System.out.println("Your LinkedList with all positive integers is properly sorted.");
     }
     else{
-	//  System.out.println(data);
+	System.out.println(data);
     }
-    //  System.out.println("\n");
+    System.out.println("\n");
 
 
     //-----------SORTING NEGATIVES-----------
