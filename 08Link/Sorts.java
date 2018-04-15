@@ -12,10 +12,15 @@ public class Sorts{
 	    arr[i] = new MyLinkedListImproved<Integer>();
 	    neg[i] = new MyLinkedListImproved<Integer>();
 	}
-	
+	System.out.println("Outside works");
 	for (int n = 1; n <= numDigits(max); n++){
+	    System.out.println("Inside 1 works");
 	    for (Integer m:data){
-		if (m < 0){
+		System.out.println(m);
+		if (m.compareTo(0) < 0){
+		    System.out.println(10 + m/factor%10);
+		    System.out.println(m);
+		    System.out.println("________________________");
 		    neg[10 + (m/factor%10)].add(m);
 		}
 		else{
@@ -45,7 +50,17 @@ public class Sorts{
 	return dig;
     }
 
-   public static void main(String[] args) {
+    public static void main(String[] args){
+	MyLinkedListImproved<Integer> l = new MyLinkedListImproved<>();
+	Random m = new Random();
+	for(int i = 0; i < 10; i++){
+	    l.add(-1 * m.nextInt(200));
+	}
+	System.out.println(l);
+	radixsort(l);
+	System.out.println(l);
+    }
+    /* public static void main(String[] args) {
     //-----------SORTING POSITIVES-----------
        // System.out.println("TESTING ON POSITIVE INTEGERS ONLY:");
     MyLinkedListImproved<Integer> data = new MyLinkedListImproved<>();
@@ -283,6 +298,6 @@ public class Sorts{
     else{
       System.out.println(data);
     }
-  }
+    }*/
 
 }
