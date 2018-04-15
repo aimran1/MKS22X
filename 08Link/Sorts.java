@@ -30,7 +30,7 @@ public class Sorts{
 	    }
 	}
 	neg.extend(data);
-	data = neg;
+	data.extend(neg);
     }
 
     private static MyLinkedListImproved<Integer> radixN(MyLinkedListImproved<Integer> data){
