@@ -76,7 +76,7 @@ public class Sorts{
 	MyLinkedListImproved<Integer> l = new MyLinkedListImproved<>();
 	Random m = new Random();
 	for(int i = 0; i < 10; i++){
-	    l.add(1 * m.nextInt(200));
+	    l.add(-1 * m.nextInt(200));
 	}
 	System.out.println(l);
 	radixsort(l);
