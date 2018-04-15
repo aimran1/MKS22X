@@ -155,6 +155,7 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
 	}
 	else if (index == length){
 	    last = last.getprev();
+	    last.setNext(null);
 	}
 	else {
 	    n.getprev().setNext(n.getnext());
@@ -290,11 +291,11 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     public static void main(String[] args){
 	MyLinkedListImproved<Integer> t = new MyLinkedListImproved<>();
 	Random j = new Random();
-	for (int i = 0; i < 11; i++){
+	for (int i = 1; i < 12; i++){
 	    t.add(i);
 	}
 	System.out.println(t);
-	System.out.println(t.remove(5));
+	System.out.println(t.remove(10));
 	System.out.println(t);
     }
     
