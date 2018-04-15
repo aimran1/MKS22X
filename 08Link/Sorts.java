@@ -5,11 +5,17 @@ public class Sorts{
     public static void radixsort(MyLinkedListImproved<Integer> data){
 	@SuppressWarnings("unchecked") MyLinkedListImproved<Integer>[] arr = new MyLinkedListImproved[10];
 	MyLinkedListImproved<Integer> neg = new MyLinkedListImproved<>();
+
+	if(data.size() < 1){
+	    return;
+	}
+	
 	Integer max = data.get(data.max());
 	int factor = 1;
 	for (int i = 0; i < 10; i++){
 	    arr[i] = new MyLinkedListImproved<Integer>();
 	}
+	
 	for (Integer i:data){
 	    if(i<0){
 		neg.add(i);
@@ -17,12 +23,8 @@ public class Sorts{
 	    }
 	}
 
-	System.out.println(neg);
 	for (int n = 1; n <= numDigits(max); n++){
 	    for (Integer m:data){
-		System.out.println(m);
-		System.out.println(data);
-		System.out.println(m/factor%10);
 		arr[m/factor%10].add(m);
 	    }
 	    factor = factor * 10;
@@ -74,17 +76,7 @@ public class Sorts{
 	return dig;
     }
 
-    public static void main(String[] args){
-	MyLinkedListImproved<Integer> l = new MyLinkedListImproved<>();
-	Random m = new Random();
-	for(int i = 0; i < 10; i++){
-	    l.add( m.nextInt(200) - 100);
-	}
-	System.out.println(l);
-	radixsort(l);
-	System.out.println(l);
-    }
-    /*  public static void main(String[] args) {
+      public static void main(String[] args) {
     //-----------SORTING POSITIVES-----------
         System.out.println("TESTING ON POSITIVE INTEGERS ONLY:");
     MyLinkedListImproved<Integer> data = new MyLinkedListImproved<>();
@@ -324,6 +316,6 @@ public class Sorts{
     else{
       System.out.println(data);
     }
-    }*/
+    }
 
 }
