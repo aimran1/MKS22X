@@ -15,10 +15,8 @@ public class MyLinkedListImproved<T extends Comparable<T>> implements Iterable<T
     //ToString
     public String toString(){
 	String ans = "";
-	Node c = first;
-	for (int i = 0; i < length; i++){
-	    ans += "(" + c.getValue() + ") ";
-	    c = c.getnext();
+	for (T D: this){
+	    ans += "(" + D + ") ";
 	}
 	return ans;
     }

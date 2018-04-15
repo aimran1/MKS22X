@@ -11,17 +11,17 @@ public class Sorts{
 	    arr[i] = new MyLinkedListImproved<Integer>();
 	}
 	for (Integer i:data){
-	    System.out.println(i);
 	    if(i<0){
-		System.out.println("inside");
 		neg.add(i);
 		data.remove(i);
 	    }
 	}
-	neg = radixN(neg);
 	System.out.println(neg);
 	for (int n = 1; n <= numDigits(max); n++){
 	    for (Integer m:data){
+		System.out.println(m);
+		System.out.println(data);
+		System.out.println(m/factor%10);
 		arr[m/factor%10].add(m);
 	    }
 	    factor = factor * 10;
@@ -31,6 +31,7 @@ public class Sorts{
 		arr[i].clear();
 	    }
 	}
+	neg = radixN(neg);
 	neg.extend(data);
 	data.extend(neg);
     }
@@ -76,7 +77,7 @@ public class Sorts{
 	MyLinkedListImproved<Integer> l = new MyLinkedListImproved<>();
 	Random m = new Random();
 	for(int i = 0; i < 10; i++){
-	    l.add(-1 * m.nextInt(200));
+	    l.add( m.nextInt(200) - 100);
 	}
 	System.out.println(l);
 	radixsort(l);
@@ -156,7 +157,9 @@ public class Sorts{
         System.out.println("Index of error: " + index);
         hasError = true;
       }
+      else{
       index++;
+      }
     }
 
     if(!(hasError)){
@@ -182,7 +185,7 @@ public class Sorts{
       data.add(temp);
       correctData[i] = temp;
     }
-
+    
     //Sorts data and times the sort
     start = System.currentTimeMillis();
     radixsort(data);
