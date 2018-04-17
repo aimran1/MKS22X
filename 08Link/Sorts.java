@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class Sort{
+public class Sorts{
     public static void radixsort(MyLinkedListImproved<Integer> data){
 	@SuppressWarnings("unchecked") MyLinkedListImproved<Integer>[] arr = new MyLinkedListImproved[10];
 	MyLinkedListImproved<Integer> neg = new MyLinkedListImproved<>();
