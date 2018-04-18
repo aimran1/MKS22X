@@ -10,10 +10,10 @@ public class Calculator{
 	LinkedList<Double> eq = new LinkedList<>();
 
 	for (String n: elements){
-
-	    if (Character.isDigit(n.charAt(0))){
+	    if (Character.isDouble(n.substring(0,n.length()))){
 		eq.push(Double.parseDouble(n));
 	    }
+
 	    
 	    else {
 		eq.push(operator(n,eq));
@@ -35,6 +35,10 @@ public class Calculator{
 	if (o.equals("%")){return p1 % p2;}
 
 	return 0.0;
+    }
+
+    public static void main(String[] args){
+	System.out.println(eval("23 -24 +"));
     }
     
 }
