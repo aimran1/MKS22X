@@ -11,36 +11,41 @@ public class PostFix{
 
 	for (String n: elements){
 	    System.out.println(n);
+	    	    System.out.println(eq);
+
 	    if (Character.isDigit(n.charAt(0))){
 		eq.push(Double.parseDouble(n));
-			System.out.println(eq.peek());
-
 	    }
 	    else {
-
-	    eq.push(operator(n,eq));
-	System.out.println(eq.peek());
-
+		eq.push(operator(n,eq));
 	    }
 	}
-	System.out.println(eq.peek());
-
 	return eq.peek();
     }
 
-    private static double operator(String o, LinkedList<Double> e){
-	System.out.println(o.equals( "+"));
-	
-	if (o.equals("+")){return e.pop() + e.pop();}
-	if (o.equals("-")){return e.pop() - e.pop();}
-	if (o.equals("/")){return e.pop() / e.pop();}
-	if (o.equals("*")){return e.pop() * e.pop();}
-	if (o.equals("%")){return e.pop() % e.pop();}
+    private static double operator(String o, LinkedList<Double> e){	
+	double p2 = e.pop();
+	double p1 = e.pop();
+
+	if (o.equals("+")){return p1 + p2;}
+	System.out.println("E: " + e);
+
+	if (o.equals("-")){return p1 - p2;}
+	System.out.println("E: " + e);
+
+	if (o.equals("/")){return p1 / p2;}
+	System.out.println("E: " + e);
+
+	if (o.equals("*")){return p1 * p2;}
+	System.out.println("E: " + e);
+
+	if (o.equals("%")){return p1 % p2;}
+	System.out.println("E: " + e);
 	return 0.0;
     }
 
     public static void main(String[] args){
-	System.out.println(	eval("10 2.0 +"));
+	System.out.println(	eval("8 2 + 99 9 - * 2 + 9 -"));
     }
     
 }
