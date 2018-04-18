@@ -1,0 +1,32 @@
+import java.util.*;
+import java.io.*;
+
+public class PostFix{
+
+    public static double eval(String op){
+	Scanner f = new Scanner(op);
+	double p1;
+	double p2;
+	Stack<double> eq = new Stack<>();
+
+	while (op.hasNext()){
+	    if(op.hasNextDouble()){
+		eq.push(op.nextDouble);
+		
+	    }
+	    p1 = stack.pop();
+	    p2 = stack.pop();
+	}
+
+	return 0.0;
+    }
+
+    private static double operator(String o, double p1, double p2){
+	if (o == "+"){return p1+ p2;}
+	if (o == "-"){return p1- p2;}
+	if (o == "/"){return p1/ p2;}
+	if (o == "*"){return p1* p2;}
+	re
+    }
+    
+}
