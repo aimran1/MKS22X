@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class PostFix{
+public class Calculator{
 
     public static double eval(String op){
 	String[] elements = op.split(" ");
