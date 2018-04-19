@@ -46,4 +46,13 @@ public class MyDeque<E>{
 	}
 	return data[back];
     }
+
+    public void addFirst(E element){
+	if(element == null){
+	    throw new NullPointerException();
+	}
+	if (size == data.length){
+	    resize();
+	}
+    }
 }
