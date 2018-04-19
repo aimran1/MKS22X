@@ -5,6 +5,7 @@ public class MyDeque<E>{
     private E[] data;
     private int front;
     private int back;
+    private int size;
     
     @SuppressWarnings("unchecked")
     public MyDeque(){
@@ -13,6 +14,9 @@ public class MyDeque<E>{
 
     @SuppressWarnings("unchecked")
     public MyDeque(int initialCapacity){
+	if (initialCapacity < 0){
+	    throw new IllegalArgumentException();
+	}
 	data = (E[])new Object[initialCapacity];
     }
     
@@ -25,6 +29,21 @@ public class MyDeque<E>{
 	data = temp;
     }
 
-    public 
+    public int size(){
+	return size;
+    }
 
+    public E getFirst(){
+	if (size == 0){
+	    throw new NoSuchElementException();
+	}
+	return data[front];
+    }
+
+    public E getLast(){
+	if (size == 0){
+	    throw new NoSuchElementException();
+	}
+	return data[back];
+    }
 }
