@@ -10,7 +10,7 @@ public class Calculator{
 	LinkedList<Double> eq = new LinkedList<>();
 
 	for (String n: elements){
-	    if (Character.isDigit(n.charAt(0))){
+	    if (Character.isDigit(n.charAt(0)) || n.length() > 1){
 		eq.push(Double.parseDouble(n));
 	    }
 
