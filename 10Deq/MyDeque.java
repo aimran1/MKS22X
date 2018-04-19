@@ -54,5 +54,21 @@ public class MyDeque<E>{
 	if (size == data.length){
 	    resize();
 	}
+	if (front < back){
+	    if (front > 0){
+		data[front-1] = element;
+		front = front - 1;
+	    }
+	}
+	
+    }
+
+    private int nextElement(){
+	for (int i = front; i < back; i++){
+	    if (data[i] != null){
+		return 1; 
+	    }
+	}
+	
     }
 }
