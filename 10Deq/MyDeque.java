@@ -5,11 +5,12 @@ public class MyDeque<E>{
     private E[] data;
     private int front = -1;
     private int back = 0;
-    private int size = 10;
+    private int size = 0;
     
     @SuppressWarnings("unchecked")
     public MyDeque(){
 	data = (E[])new Object[10];
+	System.out.println(data.length);
     }
 
     @SuppressWarnings("unchecked")
@@ -66,6 +67,7 @@ public class MyDeque<E>{
 	    front -= 1;
 	}
 	data[front] = element;
+	size++;
     }
 
     public void addLast(E element){
@@ -86,11 +88,17 @@ public class MyDeque<E>{
 	    back += 1;
 	}
 	data[back] = element;
+	size++;
     }
 
     public E removeFirst(){
 	if (front == -1){
 	    throw new NoSuchElementException();
+	}
+	if (size == 1){
+	    data[front] = null;
+	    front = -1;
+	    back = 0;
 	}
 	E ans = data[front];
 	data[front] = null;
@@ -100,12 +108,18 @@ public class MyDeque<E>{
 	else {
 	    front += 1;
 	}
+	size--;
 	return ans;
     }
 
     public E removeLast(){
 	if (front == -1){
 	    throw new NoSuchElementException();
+	}
+	if (size == 1){
+	    data[front] = null;
+	    front = -1;
+	    back = 0;
 	}
 	E ans = data[back];
 	data[back] = null;
@@ -115,6 +129,7 @@ public class MyDeque<E>{
 	else {
 	    back -= 1;
 	}
+	size--;
 	return ans;
     }
     
@@ -128,14 +143,15 @@ public class MyDeque<E>{
     
     public static void main(String[] args){
 	MyDeque<Integer> l = new MyDeque<>();
-        for (int i = 0; i < 10; i++){
+	/*  for (int i = 0; i < 10; i++){
 	    l.addLast(i);
 	    System.out.println(l);
 
 	    System.out.println(l.getLast());
 
-	}
-	System.out.println(l);
+	    }*/
+	System.out.println(l.size());
+	//	System.out.println(l);
     }
 
 }
