@@ -61,7 +61,7 @@ public class MyDeque<E>{
 	    front = 0;
 	}
 	else if (front == 0){
-	    front = size - 1;
+	    front = data.length - 1;
 	}
 	else {
 	    front -= 1;
@@ -81,7 +81,7 @@ public class MyDeque<E>{
 	if (front == -1){
 	    front = 0;
 	}
-	else if (back == size - 1){
+	else if (back == data.length - 1){
 	    back = 0;
 	}
 	else {
@@ -95,20 +95,22 @@ public class MyDeque<E>{
 	if (front == -1){
 	    throw new NoSuchElementException();
 	}
+	size--;
+	E ans = data[front];
 	if (size == 1){
 	    data[front] = null;
 	    front = -1;
 	    back = 0;
 	}
-	E ans = data[front];
-	data[front] = null;
-	if(front == size - 1){
-	    front = 0;
-	}
 	else {
+	    data[front] = null;
+	    if(front == data.length - 1){
+		front = 0;
+	    }
+	    else {
 	    front += 1;
+	    }
 	}
-	size--;
 	return ans;
     }
 
@@ -124,7 +126,7 @@ public class MyDeque<E>{
 	E ans = data[back];
 	data[back] = null;
 	if(back == 0){
-	    back = size - 1;
+	    back = data.length - 1;
 	}
 	else {
 	    back -= 1;
@@ -133,25 +135,46 @@ public class MyDeque<E>{
 	return ans;
     }
     
-    public  String toString(){
-	String e = "";
-	for (int i = 0; i < data.length; i++){
-	    e += data[i] + " ";
-	}
-	return e;
-    }
     
-    public static void main(String[] args){
-	MyDeque<Integer> l = new MyDeque<>();
-	/*  for (int i = 0; i < 10; i++){
-	    l.addLast(i);
-	    System.out.println(l);
-
-	    System.out.println(l.getLast());
-
-	    }*/
-	System.out.println(l.size());
-	//	System.out.println(l);
+ 
+public String toString(){
+    String ans = "[";
+    if(front < back){
+      for (int i = front; i <= back; i++){
+        ans += data[i] + " , ";
+      }
     }
+    else{
+      for(int i = front; i < data.length; i++){
+        ans += data[i] + ", ";
+      }
+      for(int i = 0; i <= back; i++){
+        ans += data[i] + ", ";
+      }
+    }
+    ans = ans.substring(0, ans.length() - 2) + "]";
+    return ans;
+  }
 
+    public static void main (String[] args){
+	MyDeque<Integer> l = new MyDeque<>();
+	for (int i = 0; i < 5; i++){
+	    l.addFirst(i);
+	    System.out.println(l.getFirst());
+	}
+	System.out.println(l);
+	l.removeFirst();
+	System.out.println(l);
+	l.removeFirst();
+	System.out.println(l);l.removeFirst();
+	System.out.println(l);l.removeFirst();
+	System.out.println(l);l.removeFirst();
+	System.out.println(l);
+	for (int i = 5; i < 11; i++){
+	    l.addLast(i);
+	    System.out.println(l.getLast());
+	}
+	System.out.println(l);
+	      
+    }
 }
