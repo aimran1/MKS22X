@@ -152,7 +152,7 @@ public class MyDeque<E>{
 	return ans;
     }
 
-    public static void main(String[] args){
+    /*   public static void main(String[] args){
 	MyDeque<Integer> l = new MyDeque<>();
 	for ( int i = 0; i < 12; i++){
 	    l.addFirst(i);
@@ -160,10 +160,10 @@ public class MyDeque<E>{
 	    System.out.println(l);
 	}
 	System.out.println(l);
-    }
+	}*/
 
     
-    /* public static void main(String[] args) {
+     public static void main(String[] args) {
     MyDeque<String> a = new MyDeque<>(), a1 = new MyDeque<>();
     ArrayList<String> b = new ArrayList<>();
 
@@ -208,7 +208,7 @@ public class MyDeque<E>{
     else{
       System.out.println("Your deque is bug-free!");
     }
-  }*/
+  }
 
 
 }
