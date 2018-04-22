@@ -68,6 +68,26 @@ public class MyDeque<E>{
 	data[front] = element;
     }
 
+    public void addLast(E element){
+	if(element == null){
+	    throw new NullPointerException();
+	}
+	if (front == back + 1){
+	    //  resize();
+	    return;
+	}
+	if (front == -1){
+	    front = 0;
+	}
+	else if (back == size - 1){
+	    back = 0;
+	}
+	else {
+	    back += 1;
+	}
+	data[back] = element;
+    }
+
     public  String toString(){
 	String e = "";
 	for (int i = 0; i < data.length; i++){
@@ -79,10 +99,10 @@ public class MyDeque<E>{
     public static void main(String[] args){
 	MyDeque<Integer> l = new MyDeque<>();
         for (int i = 0; i < 10; i++){
-	    l.addFirst(i);
+	    l.addLast(i);
 	    System.out.println(l);
 
-	    System.out.println(l.getFirst());
+	    System.out.println(l.getLast());
 
 	}
 	System.out.println(l);
