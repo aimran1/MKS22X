@@ -103,6 +103,21 @@ public class MyDeque<E>{
 	return ans;
     }
 
+    public E removeLast(){
+	if (front == -1){
+	    throw new NoSuchElementException();
+	}
+	E ans = data[back];
+	data[back] = null;
+	if(back == 0){
+	    back = size - 1;
+	}
+	else {
+	    back -= 1;
+	}
+	return ans;
+    }
+    
     public  String toString(){
 	String e = "";
 	for (int i = 0; i < data.length; i++){
