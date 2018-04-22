@@ -3,9 +3,9 @@ import java.io.*;
 
 public class MyDeque<E>{
     private E[] data;
-    private int front;
-    private int back;
-    private int size;
+    private int front = -1;
+    private int back = 0;
+    private int size = 10;
     
     @SuppressWarnings("unchecked")
     public MyDeque(){
@@ -18,6 +18,7 @@ public class MyDeque<E>{
 	    throw new IllegalArgumentException();
 	}
 	data = (E[])new Object[initialCapacity];
+	size = initialCapacity;
     }
     
     @SuppressWarnings("unchecked")
@@ -51,24 +52,40 @@ public class MyDeque<E>{
 	if(element == null){
 	    throw new NullPointerException();
 	}
-	if (size == data.length){
-	    resize();
+	if (front == back + 1){
+	    //  resize();
+	    return;
 	}
-	if (front < back){
-	    if (front > 0){
-		data[front-1] = element;
-		front = front - 1;
-	    }
+	if (front == -1){
+	    front = 0;
 	}
-	
+	else if (front == 0){
+	    front = size - 1;
+	}
+	else {
+	    front -= 1;
+	}
+	data[front] = element;
     }
 
-    private int nextElement(){
-	for (int i = front; i < back; i++){
-	    if (data[i] != null){
-		return 1; 
-	    }
+    public  String toString(){
+	String e = "";
+	for (int i = 0; i < data.length; i++){
+	    e += data[i] + " ";
 	}
-	
+	return e;
     }
+    
+    public static void main(String[] args){
+	MyDeque<Integer> l = new MyDeque<>();
+        for (int i = 0; i < 10; i++){
+	    l.addFirst(i);
+	    System.out.println(l);
+
+	    System.out.println(l.getFirst());
+
+	}
+	System.out.println(l);
+    }
+
 }
