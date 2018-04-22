@@ -53,7 +53,7 @@ public class MyDeque<E>{
 	if(element == null){
 	    throw new NullPointerException();
 	}
-	if (front == back + 1){
+	if (size == data.length){
 	    //  resize();
 	    return;
 	}
@@ -74,7 +74,7 @@ public class MyDeque<E>{
 	if(element == null){
 	    throw new NullPointerException();
 	}
-	if (front == back + 1){
+	if (size == data.length){
 	    //  resize();
 	    return;
 	}
@@ -92,37 +92,26 @@ public class MyDeque<E>{
     }
 
     public E removeFirst(){
-	if (front == -1){
+	if (size == 0){
 	    throw new NoSuchElementException();
 	}
 	size--;
 	E ans = data[front];
-	if (size == 1){
-	    data[front] = null;
-	    front = -1;
-	    back = 0;
+	data[front] = null;
+	if(front == data.length - 1){
+	    front = 0;
 	}
 	else {
-	    data[front] = null;
-	    if(front == data.length - 1){
-		front = 0;
-	    }
-	    else {
 	    front += 1;
-	    }
 	}
 	return ans;
     }
 
     public E removeLast(){
-	if (front == -1){
+	if (size == 0){
 	    throw new NoSuchElementException();
 	}
-	if (size == 1){
-	    data[front] = null;
-	    front = -1;
-	    back = 0;
-	}
+	size--;
 	E ans = data[back];
 	data[back] = null;
 	if(back == 0){
@@ -131,31 +120,30 @@ public class MyDeque<E>{
 	else {
 	    back -= 1;
 	}
-	size--;
 	return ans;
     }
     
     
  
-public String toString(){
-    String ans = "[";
-    if(front < back){
-      for (int i = front; i <= back; i++){
-        ans += data[i] + " , ";
-      }
-    }
-    else{
+    public String toString(){
+	String ans = "[";
+	if(front < back){
+	    for (int i = front; i <= back; i++){
+		ans += data[i] + " , ";
+	    }
+	}
+	else{
       for(int i = front; i < data.length; i++){
         ans += data[i] + ", ";
       }
       for(int i = 0; i <= back; i++){
-        ans += data[i] + ", ";
+	  ans += data[i] + ", ";
       }
+	}
+	ans = ans.substring(0, ans.length() - 2) + "]";
+	return ans;
     }
-    ans = ans.substring(0, ans.length() - 2) + "]";
-    return ans;
-  }
-
+    
     public static void main (String[] args){
 	MyDeque<Integer> l = new MyDeque<>();
 	for (int i = 0; i < 5; i++){
