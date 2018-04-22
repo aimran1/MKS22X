@@ -10,7 +10,6 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     public MyDeque(){
 	data = (E[])new Object[10];
-	System.out.println(data.length);
     }
 
     @SuppressWarnings("unchecked")
@@ -19,7 +18,6 @@ public class MyDeque<E>{
 	    throw new IllegalArgumentException();
 	}
 	data = (E[])new Object[initialCapacity];
-	size = initialCapacity;
     }
     
     @SuppressWarnings("unchecked")
@@ -65,8 +63,7 @@ public class MyDeque<E>{
 	    throw new NullPointerException();
 	}
 	if (size == data.length){
-	    //  resize();
-	    return;
+	    resize();
 	}
 	if (front == -1){
 	    front = 0;
@@ -86,8 +83,7 @@ public class MyDeque<E>{
 	    throw new NullPointerException();
 	}
 	if (size == data.length){
-	    //  resize();
-	    return;
+	    resize();
 	}
 	if (front == -1){
 	    front = 0;
@@ -133,9 +129,7 @@ public class MyDeque<E>{
 	}
 	return ans;
     }
-    
-    
- 
+
     public String toString(){
 	String ans = "[";
 	if(front < back){
@@ -144,18 +138,20 @@ public class MyDeque<E>{
 	    }
 	}
 	else{
-      for(int i = front; i < data.length; i++){
-        ans += data[i] + ", ";
-      }
-      for(int i = 0; i <= back; i++){
-	  ans += data[i] + ", ";
-      }
+	    for(int i = front; i < data.length; i++){
+		ans += data[i] + ", ";
+	    }
+	    for(int i = 0; i <= back; i++){
+		ans += data[i] + ", ";
+	    }
 	}
 	ans = ans.substring(0, ans.length() - 2) + "]";
 	return ans;
     }
+
+
     
-    public static void main(String[] args) {
+ public static void main(String[] args) {
     MyDeque<String> a = new MyDeque<>(), a1 = new MyDeque<>();
     ArrayList<String> b = new ArrayList<>();
 
@@ -201,5 +197,6 @@ public class MyDeque<E>{
       System.out.println("Your deque is bug-free!");
     }
   }
+
 
 }
