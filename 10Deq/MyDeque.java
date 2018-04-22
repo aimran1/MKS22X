@@ -25,8 +25,19 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     private void resize(){
         E[] temp = (E[]) new Object[data.length*2];
-	for (int i = 0; i < data.length; i++){
-	    temp[i] = data[i];
+	if (front < back){
+	    for (int i = 0; i < data.length; i++){
+		temp[i] = data[i];
+	    }
+	}
+	else{
+	    int m = 0;
+	    for (int i = front; i < data.length; i++,m++){
+		temp[m] = data[i];
+	    }
+	    for (int i = 0; i <= back; i++, m++){
+		temp[m] = data[i];
+	    }
 	}
 	data = temp;
     }
@@ -144,25 +155,51 @@ public class MyDeque<E>{
 	return ans;
     }
     
-    public static void main (String[] args){
-	MyDeque<Integer> l = new MyDeque<>();
-	for (int i = 0; i < 5; i++){
-	    l.addFirst(i);
-	    System.out.println(l.getFirst());
-	}
-	System.out.println(l);
-	l.removeFirst();
-	System.out.println(l);
-	l.removeFirst();
-	System.out.println(l);l.removeFirst();
-	System.out.println(l);l.removeFirst();
-	System.out.println(l);l.removeFirst();
-	System.out.println(l);
-	for (int i = 5; i < 11; i++){
-	    l.addLast(i);
-	    System.out.println(l.getLast());
-	}
-	System.out.println(l);
-	      
+    public static void main(String[] args) {
+    MyDeque<String> a = new MyDeque<>(), a1 = new MyDeque<>();
+    ArrayList<String> b = new ArrayList<>();
+
+    int size = Integer.parseInt(args[0]);
+    for(int i = 0; i < size; i++){
+      int temp = (int)(Math.random() * 1000);
+      if(temp % 2 == 0){
+        a.addFirst("" + temp);
+        a1.addFirst("" + temp);
+        b.add(0, "" + temp);
+      }
+      else{
+        a.addLast("" + temp);
+        a1.addLast("" + temp);
+        b.add("" + temp);
+      }
     }
+
+    int index = 0;
+    boolean hasError = false;
+    String errorEvaluation = "Errors found at these indices: ";
+    for (String x : b){
+      if (!(x.equals(a.getFirst()))){
+        System.out.println("The getFirst() function is incorrect at index " + index);
+        hasError = true;
+      }
+      if (!(x.equals(a.removeFirst()))){
+        System.out.println("There is an error at index " + index);
+        errorEvaluation += index + ", ";
+        hasError = true;
+      }
+      index++;
+    }
+
+
+    if(hasError){
+      errorEvaluation = errorEvaluation.substring(0, errorEvaluation.length() - 2);
+      System.out.println(errorEvaluation);
+      System.out.println("MyDeque: " + a1);
+      System.out.println("Actual Deque: " + b);
+    }
+    else{
+      System.out.println("Your deque is bug-free!");
+    }
+  }
+
 }
