@@ -23,8 +23,8 @@ public class MyDeque<E>{
     @SuppressWarnings("unchecked")
     private void resize(){
         E[] temp = (E[]) new Object[data.length*2];
-	if (front < back){
-	    for (int i = 0; i < data.length; i++){
+	if (front <= back){
+	    for (int i = front; i <= back; i++){
 		temp[i] = data[i];
 	    }
 	}
@@ -36,8 +36,11 @@ public class MyDeque<E>{
 	    for (int i = 0; i <= back; i++, m++){
 		temp[m] = data[i];
 	    }
+	    front = 0;
+	    back = m-1;
 	}
 	data = temp;
+	
     }
 
     public int size(){
@@ -149,9 +152,18 @@ public class MyDeque<E>{
 	return ans;
     }
 
+    public static void main(String[] args){
+	MyDeque<Integer> l = new MyDeque<>();
+	for ( int i = 0; i < 12; i++){
+	    l.addFirst(i);
+	    System.out.println(l.getFirst());
+	    System.out.println(l);
+	}
+	System.out.println(l);
+    }
 
     
- public static void main(String[] args) {
+    /* public static void main(String[] args) {
     MyDeque<String> a = new MyDeque<>(), a1 = new MyDeque<>();
     ArrayList<String> b = new ArrayList<>();
 
@@ -196,7 +208,7 @@ public class MyDeque<E>{
     else{
       System.out.println("Your deque is bug-free!");
     }
-  }
+  }*/
 
 
 }
