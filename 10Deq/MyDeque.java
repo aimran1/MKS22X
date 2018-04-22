@@ -88,6 +88,21 @@ public class MyDeque<E>{
 	data[back] = element;
     }
 
+    public E removeFirst(){
+	if (front == -1){
+	    throw new NoSuchElementException();
+	}
+	E ans = data[front];
+	data[front] = null;
+	if(front == size - 1){
+	    front = 0;
+	}
+	else {
+	    front += 1;
+	}
+	return ans;
+    }
+
     public  String toString(){
 	String e = "";
 	for (int i = 0; i < data.length; i++){
