@@ -46,6 +46,14 @@ public class MyHeap{
 	length--;
 	return ans;
     }
+
+    private void pushUp(int i){
+	int parent = (i - 1) / 2;
+	if (ismax && heap[parent].compareTo(heap[i]) < 0){
+	    swap(heap,parent,i);
+	    pushUp(parent);
+	}
+    }
     
     private static void swap(String[]ary,int a, int b){
 	String c = ary[a];
