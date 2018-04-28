@@ -25,8 +25,21 @@ public class MyHeap{
 	return heap[0];
     }
 
-    private static void swap(int[]ary,int a, int b){
-	int c = ary[a];
+    private void pushDown(int i){
+	int left = 2 * i + 1;
+	int right = 2 * i + 2;
+	if (ismax && heap[left].compareTo(heap[i]) > 0 && heap[left].compareTo(heap[right]) >= 0){
+	    swap(heap,left,i);
+	    pushDown(left);
+	}
+	else if (ismax && heap[right].compareTo(heap[i]) > 0){
+	    swap(heap,right,i);
+	    pushDown(right);
+	}    
+    }
+    
+    private static void swap(String[]ary,int a, int b){
+	String c = ary[a];
 	ary[a] = ary[b];
 	ary[b] = c;
     }
@@ -38,5 +51,7 @@ public class MyHeap{
 	}
 	heap = temp;
     }
+
+    
     
 }
