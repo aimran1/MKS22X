@@ -35,7 +35,15 @@ public class MyHeap{
 	else if (ismax && heap[right].compareTo(heap[i]) > 0){
 	    swap(heap,right,i);
 	    pushDown(right);
-	}    
+	}
+	else if (!ismax && heap[left].compareTo(heap[i]) < 0 && heap[left].compareTo(heap[right]) <= 0){
+	    swap(heap,left,i);
+	    pushDown(left);
+	}
+	else if (!ismax && heap[right].compareTo(heap[i]) < 0){
+	    swap(heap,right,i);
+	    pushDown(right);
+	}	
     }
 
     public String remove(){
@@ -53,6 +61,10 @@ public class MyHeap{
 	    swap(heap,parent,i);
 	    pushUp(parent);
 	}
+      	else if (!ismax && heap[parent].compareTo(heap[i]) > 0){
+	    swap(heap,parent,i);
+	    pushUp(parent);
+	} 
     }
 
     public void add(String str){
@@ -75,6 +87,13 @@ public class MyHeap{
 	heap = temp;
     }
 
+    public String toString(){
+	String ans = "";
+	for(int i = 0; i < heap.length; i++){
+	    ans += heap[i] + " ";
+	}
+	return ans;
+    }
     
     
 }
