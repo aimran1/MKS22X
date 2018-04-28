@@ -37,6 +37,15 @@ public class MyHeap{
 	    pushDown(right);
 	}    
     }
+
+    public String remove(){
+	String ans = heap[0];
+	swap(heap, 0, length - 1);
+	pushDown(0);
+	heap[length-1] = null;
+	length--;
+	return ans;
+    }
     
     private static void swap(String[]ary,int a, int b){
 	String c = ary[a];
