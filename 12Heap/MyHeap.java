@@ -16,6 +16,13 @@ public class MyHeap{
 	    ismax = false;
 	}
     }
-    
+
+    public int size(){
+	return length;
+    }
+
+    public String peek(){
+	return heap[0];
+    }
 
 }
