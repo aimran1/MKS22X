@@ -54,6 +54,12 @@ public class MyHeap{
 	    pushUp(parent);
 	}
     }
+
+    public void add(String str){
+	heap[length] = str;
+	pushUp(length);
+	length++;
+    }
     
     private static void swap(String[]ary,int a, int b){
 	String c = ary[a];
