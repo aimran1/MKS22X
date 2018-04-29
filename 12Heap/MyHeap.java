@@ -1,13 +1,19 @@
-public class MyHeap{
+import java.util.*;
+import java.io.*;
 
-    private String[] heap = new String[10];
+public class MyHeap<T extends Comparable<T>>{
+    private T[] heap;
     private boolean ismax;
     private int length = 0;
 
+    @SuppressWarnings("unchecked")
     public MyHeap(){
+	heap = (T[]) new Comparable[10];
 	ismax = true;
+
     }
 
+    @SuppressWarnings("unchecked")
     public MyHeap(boolean max){
 	if (max){
 	    ismax = true;
@@ -15,13 +21,14 @@ public class MyHeap{
 	else{
 	    ismax = false;
 	}
+	heap = (T[]) new Comparable[10];
     }
 
     public int size(){
 	return length;
     }
 
-    public String peek(){
+    public T peek(){
 	return heap[0];
     }
 
@@ -46,8 +53,8 @@ public class MyHeap{
 	}	
     }
 
-    public String remove(){
-	String ans = heap[0];
+    public T remove(){
+	T ans = heap[0];
 	swap(heap, 0, length - 1);
 	pushDown(0);
 	heap[length-1] = null;
@@ -57,17 +64,25 @@ public class MyHeap{
 
     private void pushUp(int i){
 	int parent = (i - 1) / 2;
+	/*	if (i == 10){
+	    System.out.println(heap[parent]);
+	    System.out.println(heap[i]);
+	    System.out.println(heap[parent].compareTo(heap[i]));
+	    }*/
 	if (ismax && heap[parent].compareTo(heap[i]) < 0){
 	    swap(heap,parent,i);
 	    pushUp(parent);
+	    System.out.println(parent + " " + i);
+	    System.out.println("Entered max");
 	}
       	else if (!ismax && heap[parent].compareTo(heap[i]) > 0){
 	    swap(heap,parent,i);
 	    pushUp(parent);
-	} 
+	    System.out.println("Entered min");
+	}
     }
 
-    public void add(String str){
+    public void add(T str){
 	if (length == heap.length){
 	    resize();
 	}
@@ -76,14 +91,15 @@ public class MyHeap{
 	length++;
     }
     
-    private static void swap(String[]ary,int a, int b){
-	String c = ary[a];
+    private void swap(T[]ary,int a, int b){
+	T c = ary[a];
 	ary[a] = ary[b];
 	ary[b] = c;
     }
 
+    @SuppressWarnings("unchecked")
     private void resize(){
-	String[] temp = new String[heap.length * 2];
+	T[] temp = (T[]) new Comparable[heap.length * 2];
 	for (int i = 0; i < heap.length; i++){
 	    temp[i] = heap[i];
 	}
@@ -99,11 +115,12 @@ public class MyHeap{
     }
 
     public static void main(String[] args){
-	MyHeap m = new MyHeap();
+	MyHeap<Integer> m = new MyHeap<>();
 	for (int i = 0; i < 11; i++){
-	    m.add(i + "");
+	    m.add(i);
 	}
 	System.out.println(m);
+
     }
     
     
