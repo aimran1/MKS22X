@@ -68,6 +68,9 @@ public class MyHeap{
     }
 
     public void add(String str){
+	if (length == heap.length){
+	    resize();
+	}
 	heap[length] = str;
 	pushUp(length);
 	length++;
@@ -93,6 +96,14 @@ public class MyHeap{
 	    ans += heap[i] + " ";
 	}
 	return ans;
+    }
+
+    public static void main(String[] args){
+	MyHeap m = new MyHeap();
+	for (int i = 0; i < 20; i++){
+	    m.add(i + "");
+	}
+	System.out.println(m);
     }
     
     
