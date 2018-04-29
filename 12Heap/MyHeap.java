@@ -92,7 +92,7 @@ public class MyHeap{
 
     public String toString(){
 	String ans = "";
-	for(int i = 0; i < heap.length; i++){
+	for(int i = 0; i < length; i++){
 	    ans += heap[i] + " ";
 	}
 	return ans;
@@ -100,7 +100,7 @@ public class MyHeap{
 
     public static void main(String[] args){
 	MyHeap m = new MyHeap();
-	for (int i = 0; i < 20; i++){
+	for (int i = 0; i < 11; i++){
 	    m.add(i + "");
 	}
 	System.out.println(m);
