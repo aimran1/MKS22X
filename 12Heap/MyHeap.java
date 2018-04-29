@@ -64,21 +64,13 @@ public class MyHeap<T extends Comparable<T>>{
 
     private void pushUp(int i){
 	int parent = (i - 1) / 2;
-	/*	if (i == 10){
-	    System.out.println(heap[parent]);
-	    System.out.println(heap[i]);
-	    System.out.println(heap[parent].compareTo(heap[i]));
-	    }*/
 	if (ismax && heap[parent].compareTo(heap[i]) < 0){
 	    swap(heap,parent,i);
 	    pushUp(parent);
-	    System.out.println(parent + " " + i);
-	    System.out.println("Entered max");
 	}
       	else if (!ismax && heap[parent].compareTo(heap[i]) > 0){
 	    swap(heap,parent,i);
 	    pushUp(parent);
-	    System.out.println("Entered min");
 	}
     }
 
@@ -116,11 +108,10 @@ public class MyHeap<T extends Comparable<T>>{
 
     public static void main(String[] args){
 	MyHeap<Integer> m = new MyHeap<>();
-	for (int i = 0; i < 11; i++){
-	    m.add(i);
+	for (int i = 0; i < 12; i++){
+	    m.add(i);	   
 	}
 	System.out.println(m);
-
     }
     
     
