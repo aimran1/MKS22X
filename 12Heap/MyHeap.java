@@ -35,29 +35,32 @@ public class MyHeap<T extends Comparable<T>>{
     private void pushDown(int i){
 	int left = 2 * i + 1;
 	int right = 2 * i + 2;
-	if (ismax && heap[left].compareTo(heap[i]) > 0 && heap[left].compareTo(heap[right]) >= 0){
-	    swap(heap,left,i);
-	    pushDown(left);
+	if (left < length-1){
+	    if (ismax && heap[left].compareTo(heap[i]) > 0 && heap[left].compareTo(heap[right]) >= 0){
+		swap(heap,left,i);
+		pushDown(left);
+	    }
+	    else if (!ismax && heap[left].compareTo(heap[i]) < 0 && heap[left].compareTo(heap[right]) <= 0){
+		swap(heap,left,i);
+		pushDown(left);
+	    }
 	}
-	else if (ismax && heap[right].compareTo(heap[i]) > 0){
-	    swap(heap,right,i);
-	    pushDown(right);
+	if (right < length-1){
+	    if (ismax && heap[right].compareTo(heap[i]) > 0){
+		swap(heap,right,i);
+		pushDown(right);
+	    }   
+	    else if (!ismax && heap[right].compareTo(heap[i]) < 0){
+		swap(heap,right,i);
+		pushDown(right);
+	    }
 	}
-	else if (!ismax && heap[left].compareTo(heap[i]) < 0 && heap[left].compareTo(heap[right]) <= 0){
-	    swap(heap,left,i);
-	    pushDown(left);
-	}
-	else if (!ismax && heap[right].compareTo(heap[i]) < 0){
-	    swap(heap,right,i);
-	    pushDown(right);
-	}	
     }
 
     public T remove(){
 	T ans = heap[0];
 	swap(heap, 0, length - 1);
 	pushDown(0);
-	heap[length-1] = null;
 	length--;
 	return ans;
     }
@@ -111,6 +114,29 @@ public class MyHeap<T extends Comparable<T>>{
 	for (int i = 0; i < 12; i++){
 	    m.add(i);	   
 	}
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+	m.remove();
+	System.out.println(m);
+		m.remove();
 	System.out.println(m);
     }
     
