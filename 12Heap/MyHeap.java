@@ -118,7 +118,7 @@ public class MyHeap<T extends Comparable<T>>{
 	for (int i = 0; i < 12; i++){
 	    m.add(i);	   
 	System.out.println(m);
-
+	System.out.println(m.size());
 	}
     }
     
