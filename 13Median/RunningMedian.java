@@ -57,8 +57,9 @@ public class RunningMedian{
 
     public static void main(String[] args){
 	RunningMedian m = new RunningMedian();
-	for (Double i = 5.0; i < 7.0; i++){
-	    m.add(i);
+	Random l = new Random();
+	for (Double i =0.0; i < 7.0; i++){
+	    m.add(l.nextDouble() * 100 / 2);
 	    System.out.println(m);
 	    System.out.println(m.getMedian());
 	}
