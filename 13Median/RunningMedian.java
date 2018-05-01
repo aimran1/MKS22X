@@ -11,7 +11,10 @@ public class RunningMedian{
     public RunningMedian(){}
 
     public void add(Double m){
-	if (m.compareTo(getMedian()) > 0){
+	if (size() == 0){
+	    min.add(m);
+	}
+	else if (m.compareTo(getMedian()) > 0){
 	    max.add(m);
 	}
 	else {
@@ -34,7 +37,7 @@ public class RunningMedian{
 	    throw new NoSuchElementException();
 	}
 	if (min.size() == max.size()){
-	    return min.peek() + max.peek() / 2;
+	    return (min.peek() + max.peek()) / 2;
 	}
 	else if (min.size() > max.size()){
 	    return min.peek();
@@ -48,11 +51,15 @@ public class RunningMedian{
 	return max.size() + min.size();
     }
 
+    public String toString(){
+	return min.peek() + " " + max.peek();
+    }
+
     public static void main(String[] args){
 	RunningMedian m = new RunningMedian();
-	for (Double i = 0.0; i < 11; i++){
+	for (Double i = 5.0; i < 7.0; i++){
 	    m.add(i);
-	    System.out.println(i);
+	    System.out.println(m);
 	    System.out.println(m.getMedian());
 	}
 	
