@@ -28,4 +28,8 @@ public class RunningMedian{
 	    return max.peek();
 	}
     }
+
+    public int size(){
+	return max.size() + min.size();
+    }
 }
