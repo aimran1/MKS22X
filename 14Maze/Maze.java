@@ -16,7 +16,21 @@ public class Maze{
   YOU MUST COMPLETE THIS METHOD!!!
   */
   public Location[] getNeighbors(Location L){
-    return null;
+      Location[] neigh = new Location[4];
+      int[] xNeigh = {0,0,1,-1};
+      int[] yNeigh = {1,-1,0,0};
+      for (int i = 0,ind = 0; i < 4; i++){
+	  int xcor = L.getX() + xNeigh[i];
+	  int ycor = L.getY() + yNeigh[i];
+	  if (xcor >= 0 && xcor < maze.length &&
+	      ycor >= 0 && ycor < maze.length){
+	      if (maze[xcor][ycor] == ' ' || maze[xcor][ycor] == 'E'){
+		  neigh[ind] = new Location(xcor,ycor,L);
+		  ind++;
+	      }
+	  }
+      }
+      return neigh;
   }
 
   public Location getStart(){
