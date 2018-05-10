@@ -13,7 +13,6 @@ public class MazeSolver{
   //0: BFS
   //1: DFS
   public boolean solve(int mode){
-
       if (mode == 0){
 	  frontier = new FrontierQueue();
       }
@@ -21,20 +20,29 @@ public class MazeSolver{
 	  frontier = new FrontierStack();
       }
       frontier.add(maze.getStart());
-      
-      while (frontier.hasNext()){
-	  Location here = frontier.next();
-	  Location[] neighs = maze.getNeighbors(here);
+      Location here = maze.getStart();
 
+      while (frontier.hasNext()){
+	  Location[] neighs = maze.getNeighbors(here);
+	  System.out.println(maze);
 	  for (int i = 0; i < 4; i++){
+	      Location path;
 	      if (neighs[i].getX() == maze.getEnd().getX() &&
 		  neighs[i].getY() == maze.getEnd().getY()){
-		  return path(neighs[i]);
+		  path = new Location(neighs[i].getX(), neighs[i].getY(), neighs[i].getPrev()); 
+		  while(path.getX() != maze.getStart().getX() &&
+			path.getY() != maze.getStart().getY()){
+		      maze.set(path.getX(),path.getY(),'@');
+		      path = path.getPrev();
+		  }
+		  System.out.println(maze);
+		  return true;
 	      }
 	      else{
 		  frontier.add(neighs[i]);
 		  maze.set(neighs[i].getX(), neighs[i].getY(), '?');
 	      }
+	      here = frontier.next();
 	  }
       }
       
@@ -42,18 +50,15 @@ public class MazeSolver{
     return false;
   }
 
-    private boolean path(Location loc){
-	while(loc.getX() != maze.getStart().getX() &&
-	      loc.getY() != maze.getStart().getY()){
-	    maze.set(loc.getX(),loc.getY(),'@');
-	    loc = loc.getPrev();
-	}
-	System.out.println(maze);
-	return true;
-    }
-
   public String toString(){
     return maze.toString();
   }
+
+    public static void main(String[] args){
+	MazeSolver e = new MazeSolver("test.txt");
+	System.out.println(e);
+	System.out.println(e.solve(1));
+	System.out.println(e);
+    }
 }
 
