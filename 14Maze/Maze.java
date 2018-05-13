@@ -1,4 +1,4 @@
-Solvimport java.io.*;
+import java.io.*;
 import java.io.FileNotFoundException;
 import java.util.*;
 public class Maze{
@@ -23,7 +23,7 @@ public class Maze{
 	  int xcor = L.getX() + xNeigh[i];
 	  int ycor = L.getY() + yNeigh[i];
 	  if (xcor >= 0 && xcor < maze.length &&
-	      ycor >= 0 && ycor < maze.length){
+	      ycor >= 0 && ycor < maze[0].length){
 	      if (maze[xcor][ycor] == ' ' || maze[xcor][ycor] == 'E'){
 		  neigh[ind] = new Location(xcor,ycor,L);
 		  ind++;
@@ -175,5 +175,13 @@ public class Maze{
     }
     return ans;
   }
+
+    public static void main(String[] args){
+	Maze e = new Maze("test.txt");
+	System.out.println(e);
+	Location[] m = e.getNeighbors(e.end);
+	System.out.println(Arrays.toString(m));
+    }
+
 }
 
