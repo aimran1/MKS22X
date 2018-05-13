@@ -33,13 +33,12 @@ public class MazeSolver{
 	    System.out.println(maze);
 
 	    Location[] neighs = maze.getNeighbors(here);
-	    for (int i = 0; i < 4; i++){
-		Location path;
+	    Location path;
         
-		if(neighs[i] != null){
+	    if(frontier.next() != null){
 		    
-		    if (neighs[i].getX() == maze.getEnd().getX() &&
-			neighs[i].getY() == maze.getEnd().getY()){
+		    if (here.getX() == maze.getEnd().getX() &&
+			here.getY() == maze.getEnd().getY()){
 			
 			path = here;
 		      
@@ -50,16 +49,18 @@ public class MazeSolver{
 			return true;
 		    }
 		    else{
-		      
-			frontier.add(neighs[i]);
-			maze.set(neighs[i].getX(), neighs[i].getY(), '?');
-		    }
-		}		
-	    }
+			maze.set(here.getX(),here.getY(),'.');
+			for (int i = 0; i < 4; i++){
+			    frontier.add(neighs[i]);
+			    if (neighs[i].getX() < maze.length && neighs[i].getY() < maze[0].length){
+			    maze.set(neighs[i].getX(), neighs[i].getY(), '?');
+			}
+		    }		
+		}
 	    		here = frontier.next();
-
+			
 	}
-      
+	
       
 	return false;
     }
