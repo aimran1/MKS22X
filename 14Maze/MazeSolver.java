@@ -30,7 +30,7 @@ public class MazeSolver{
 	
 	while (frontier.hasNext()){
 	   
-	    			    System.out.println(maze);
+	    System.out.println(maze);
 
 	    Location[] neighs = maze.getNeighbors(here);
 	    for (int i = 0; i < 4; i++){
@@ -91,7 +91,7 @@ public class MazeSolver{
 	System.out.println(e);
 	System.out.println(e.maze.getStart());
 	System.out.println(e.maze.getEnd());
-	e.solve(0);
+	e.solve(1);
 	System.out.println(e);
     }
 }
