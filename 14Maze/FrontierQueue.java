@@ -13,7 +13,7 @@ public class FrontierQueue implements Frontier{
 	if (!hasNext()){
 	    throw new NullPointerException();
 	}
-	return e.removeLast();
+	return e.removeFirst();
     }
 
     public void add(Location n){
