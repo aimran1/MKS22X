@@ -17,8 +17,9 @@ public class Maze{
   */
   public Location[] getNeighbors(Location L){
       Location[] neigh = new Location[4];
-      int[] xNeigh = {0,0,1,-1};
-      int[] yNeigh = {1,-1,0,0};
+      int[] yNeigh = {0,0,1,-1};
+      int[] xNeigh = {1,-1,0,0};
+
       for (int i = 0,ind = 0; i < 4; i++){
 	  int xcor = L.getX() + xNeigh[i];
 	  int ycor = L.getY() + yNeigh[i];

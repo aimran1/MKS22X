@@ -21,6 +21,6 @@ public class Location{
     }
 
     public String toString(){
-	return "" + x + " " + y;
+	return "x:" + x + " y: " + y + " p:" + previous;
     }
 }
