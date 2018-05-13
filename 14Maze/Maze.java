@@ -180,7 +180,7 @@ public class Maze{
 	Maze e = new Maze("test.txt");
 	System.out.println(e);
 	Location[] m = e.getNeighbors(e.end);
-	System.out.println(Arrays.toString(m));
+	System.out.println(Arrays.get(5,4));
     }
 
 }
