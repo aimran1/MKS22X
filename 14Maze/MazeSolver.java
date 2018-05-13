@@ -1,3 +1,6 @@
+import java.util.*;
+import java.io.*;
+
 public class MazeSolver{
   private Maze maze;
   private Frontier frontier;
@@ -19,30 +22,35 @@ public class MazeSolver{
       else if(mode == 1){
 	  frontier = new FrontierStack();
       }
-      frontier.add(maze.getStart());
       Location here = maze.getStart();
-
+      frontier.add(here);
+      System.out.println(frontier);
+      
       while (frontier.hasNext()){
 	  Location[] neighs = maze.getNeighbors(here);
-	  System.out.println(maze);
+	  System.out.println(Arrays.toString(neighs));
 	  for (int i = 0; i < 4; i++){
 	      Location path;
-	      if (neighs[i].getX() == maze.getEnd().getX() &&
-		  neighs[i].getY() == maze.getEnd().getY()){
-		  path = new Location(neighs[i].getX(), neighs[i].getY(), neighs[i].getPrev()); 
-		  while(path.getX() != maze.getStart().getX() &&
-			path.getY() != maze.getStart().getY()){
-		      maze.set(path.getX(),path.getY(),'@');
-		      path = path.getPrev();
+	      if(neighs[i] != null){
+
+		  if (neighs[i].getX() == maze.getEnd().getX() &&
+		      neighs[i].getY() == maze.getEnd().getY()){
+		      path = new Location(neighs[i].getPrev().getX(), neighs[i].getPrev().getY(), neighs[i].getPrev().getPrev());
+		      
+		      while(path.getX() != maze.getStart().getX() &&
+			    path.getY() != maze.getStart().getY()){			  		      System.out.println("Got in");
+
+			  maze.set(path.getX(),path.getY(),'@');
+			  path = path.getPrev();
+		      }
+		      return true;
 		  }
-		  System.out.println(maze);
-		  return true;
+		  else{
+		      frontier.add(neighs[i]);
+		      maze.set(neighs[i].getX(), neighs[i].getY(), '?');
+		  }
+		  here = frontier.next();
 	      }
-	      else{
-		  frontier.add(neighs[i]);
-		  maze.set(neighs[i].getX(), neighs[i].getY(), '?');
-	      }
-	      here = frontier.next();
 	  }
       }
       
@@ -57,7 +65,7 @@ public class MazeSolver{
     public static void main(String[] args){
 	MazeSolver e = new MazeSolver("test.txt");
 	System.out.println(e);
-	System.out.println(e.solve(1));
+	System.out.println(e.solve(0));
 	System.out.println(e);
     }
 }

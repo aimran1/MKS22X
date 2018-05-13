@@ -176,16 +176,5 @@ public class Maze{
     return ans;
   }
 
-    public static void main(String[] args){
-	Maze e = new Maze("test.txt");
-	System.out.println(e);
-	Location i = new Location(4,5,null);
-	e.set(4,5,'u');
-		System.out.println(e);
-
-	Location[] m = e.getNeighbors(i);
-	System.out.println(Arrays.toString(m));
-    }
-
 }
 
