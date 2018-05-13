@@ -88,13 +88,13 @@ public class MazeSolver{
     }
 
     
-    /*   public static void main(String[] args){
+    public static void main(String[] args){
 	MazeSolver e = new MazeSolver("test.txt");
 	System.out.println(e);
 	System.out.println(e.maze.getStart());
 	System.out.println(e.maze.getEnd());
-	System.out.println(e.solve(2));
+	System.out.println(e.solve(0));
 	System.out.println(e);
-	}*/
+    }
 }
 
