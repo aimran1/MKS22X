@@ -9,7 +9,6 @@ public class Maze{
   private char[][]maze;
 
 
-
   /*
   YOU MUST COMPLETE THIS METHOD!!!
   YOU MUST COMPLETE THIS METHOD!!!
