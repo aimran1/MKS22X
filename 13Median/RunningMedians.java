@@ -1,14 +1,14 @@
 import java.util.*;
 import java.io.*;
 
-public class RunningMedian{
+public class RunningMedians{
 
     @SuppressWarnings("unchecked")
     private MyHeap<Double> min = new MyHeap();
     @SuppressWarnings("unchecked")
     private MyHeap<Double> max = new MyHeap(false);
     
-    public RunningMedian(){}
+    public RunningMedians(){}
 
     public void add(Double m){
 	if (size() == 0){
@@ -53,17 +53,6 @@ public class RunningMedian{
 
     public String toString(){
 	return min.peek() + " " + max.peek();
-    }
-
-    public static void main(String[] args){
-	RunningMedian m = new RunningMedian();
-	Random l = new Random();
-	for (Double i =0.0; i < 7.0; i++){
-	    m.add(l.nextDouble() * 100 / 2);
-	    System.out.println(m);
-	    System.out.println(m.getMedian());
-	}
-	
     }
     
 }
