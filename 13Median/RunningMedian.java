@@ -1,14 +1,14 @@
 import java.util.*;
 import java.io.*;
 
-public class RunningMedians{
+public class RunningMedian{
 
     @SuppressWarnings("unchecked")
     private MyHeap<Double> min = new MyHeap();
     @SuppressWarnings("unchecked")
     private MyHeap<Double> max = new MyHeap(false);
     
-    public RunningMedians(){}
+    public RunningMedian(){}
 
     public void add(Double m){
 	if (size() == 0){
