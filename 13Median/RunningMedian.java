@@ -33,6 +33,7 @@ public class RunningMedian{
     }
 
     public Double getMedian(){
+
 	if (size() == 0){
 	    throw new NoSuchElementException();
 	}
@@ -53,6 +54,19 @@ public class RunningMedian{
 
     public String toString(){
 	return min.peek() + " " + max.peek();
+    }
+
+    public static void main(String[] args){
+	RunningMedian i = new RunningMedian();
+	for (double m = 0.0; m < 11.0; m++){
+	    i.add(m);
+	    System.out.println(i);
+	    System.out.println(i.min.size() + " " + i.max.size());
+
+	    System.out.println(i.getMedian());
+	    System.out.println("_______________________________");
+
+	}
     }
     
 }
