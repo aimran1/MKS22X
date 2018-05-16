@@ -6,8 +6,8 @@ public class Maze{
   private static final String HIDE_CURSOR =  "\033[?25l";
   private static final String SHOW_CURSOR =  "\033[?25h";
   Location start,end;
+    private boolean A = false;
   private char[][]maze;
-
 
   /*
   YOU MUST COMPLETE THIS METHOD!!!
@@ -25,7 +25,7 @@ public class Maze{
 	  if (xcor >= 0 && xcor < maze.length &&
 	      ycor >= 0 && ycor < maze[0].length){
 	      if (maze[xcor][ycor] == ' ' || maze[xcor][ycor] == 'E'){
-		  neigh[ind] = new Location(xcor,ycor,L);
+		  neigh[ind] = new Location(xcor,ycor,L,Math.abs(xcor-end.getX()) + Math.abs(ycor-end.getY()));
 		  ind++;
 	      }
 	  }
