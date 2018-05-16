@@ -28,7 +28,7 @@ public class MazeSolver{
 	}
 	else if(mode == 3){
 	    frontier = new FrontierPriorityQueue();
-	    
+	    maze.setA(true);
 	}
 	Location here = maze.getStart();
 	Location finish = maze.getEnd();
@@ -95,7 +95,6 @@ public class MazeSolver{
     public static void main(String[] args){
 	MazeSolver e = new MazeSolver("test.txt");
 	e.solve(2);
-	System.out.println(e);
     }
 }
 

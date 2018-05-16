@@ -6,7 +6,7 @@ public class Maze{
   private static final String HIDE_CURSOR =  "\033[?25l";
   private static final String SHOW_CURSOR =  "\033[?25h";
   Location start,end;
-    private boolean A = false;
+  private boolean A = false;
   private char[][]maze;
 
   /*
@@ -25,7 +25,7 @@ public class Maze{
 	  if (xcor >= 0 && xcor < maze.length &&
 	      ycor >= 0 && ycor < maze[0].length){
 	      if (maze[xcor][ycor] == ' ' || maze[xcor][ycor] == 'E'){
-		  neigh[ind] = new Location(xcor,ycor,L,Math.abs(xcor-end.getX()) + Math.abs(ycor-end.getY()));
+		  neigh[ind] = new Location(xcor,ycor,L,Math.abs(xcor-end.getX()) + Math.abs(ycor-end.getY()), L.getFrom() + 1, getA());
 		  ind++;
 	      }
 	  }
@@ -40,6 +40,13 @@ public class Maze{
     return end;
   }
 
+    public boolean getA(){
+	return A;
+    }
+
+    public void setA(boolean m){
+	A = m;
+    }
 
   private static String go(int x,int y){
     return ("\033[" + x + ";" + y + "H");
