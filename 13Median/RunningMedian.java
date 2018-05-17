@@ -56,9 +56,11 @@ public class RunningMedian{
 	return min.peek() + " " + max.peek();
     }
 
-    public static void main(String[] args){
+    /*public static void main(String[] args){
 	RunningMedian i = new RunningMedian();
-	for (double m = 0.0; m < 11.0; m++){
+	String list = "";
+	for (double m = 0.0; m < 8.0; m++){
+	    list+= " " + m;
 	    i.add(m);
 	    System.out.println(i);
 	    System.out.println(i.min.size() + " " + i.max.size());
@@ -67,6 +69,9 @@ public class RunningMedian{
 	    System.out.println("_______________________________");
 
 	}
-    }
+		    System.out.println(i.getMedian());
+
+	System.out.println(list);
+    }*/
     
 }
