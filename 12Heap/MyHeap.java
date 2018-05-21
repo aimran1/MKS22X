@@ -112,5 +112,20 @@ public class MyHeap<T extends Comparable<T>>{
 	}
 	return ans;
     }
+
+    /*  public static void main(String[] args){
+	MyHeap l = new MyHeap();
+	for (int i = 0; i <12; i++){
+	    l.add(i);
+	    System.out.println(l);
+	    	System.out.println(l.size());
+
+	}
+	for (int i = 0; i <12;i++){
+	    l.remove();
+	    System.out.println(l);
+
+	}
+	}*/
     
 }
